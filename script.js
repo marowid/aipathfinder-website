@@ -40,6 +40,31 @@ function initMap() {
 
 // Handle initial page load
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if we should show a specific section
+    const sectionToShow = sessionStorage.getItem('showSection');
+    if (sectionToShow) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Show the requested section
+        const targetSection = document.getElementById(sectionToShow);
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+
+        // Update active nav link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.classList.remove('active'));
+        const targetNavLink = document.querySelector(`a[href="#${sectionToShow}"]`);
+        if (targetNavLink) {
+            targetNavLink.classList.add('active');
+        }
+
+        // Clear the session storage
+        sessionStorage.removeItem('showSection');
+    }
+
     // Smooth scroll behavior for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
