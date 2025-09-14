@@ -30,14 +30,15 @@ body {
 
 /* Navigation */
 nav {
-    background: rgba(0, 0, 0, 0.8); /* Darker background for nav */
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 87, 255, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(1, 255, 249, 0.1);
 }
 
 .nav-container {
@@ -68,36 +69,50 @@ nav {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
     transition: all 0.3s ease;
     position: relative;
+    border: 1px solid transparent;
 }
 
 .nav-menu a:hover {
-    color: var(--primary-blue);
+    color: var(--light-blue);
     transform: translateY(-2px);
+    border-color: rgba(1, 255, 249, 0.3);
+    background: rgba(1, 255, 249, 0.1);
+    box-shadow: 0 5px 15px rgba(1, 255, 249, 0.2);
 }
 
 .nav-menu a.active {
-    color: var(--white);
+    color: white;
     background: linear-gradient(135deg, #0057ff, #01fff9);
+    box-shadow: 0 5px 20px rgba(0, 87, 255, 0.3);
+    border-color: rgba(1, 255, 249, 0.5);
 }
 
 /* Sections */
 .section {
-    display: none;
-    padding: 100px 0 50px;
-    min-height: 100vh;
-    animation: fadeIn 0.5s ease;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: visibility 0s 0.5s, height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .section.active {
-    display: block;
+    visibility: visible;
+    height: auto;
+    padding: 100px 0 50px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: visibility 0s 0s, height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out, transform 0.5s ease-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+@keyframes slideInFromBottom {
+    from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -108,6 +123,7 @@ nav {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin: 2rem 0;
+    animation: slideInFromBottom 0.6s ease-out;
 }
 
 /* Home Section */
@@ -172,6 +188,7 @@ nav {
     text-align: center;
     margin: 2rem 0;
     box-shadow: 0 10px 30px rgba(0, 87, 255, 0.3);
+    animation: slideInFromBottom 0.6s ease-out 0.1s both;
 }
 
 .mission-statement h2 {
@@ -187,10 +204,35 @@ nav {
 }
 
 /* About Section */
-.about-top {
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #e0e0e0;
+.about-statement {
+    background: linear-gradient(135deg, #01fff9, #0057ff);
+    color: white;
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 87, 255, 0.3);
+    animation: slideInFromBottom 0.6s ease-out 0.1s both;
+}
+
+.about-statement h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    margin-bottom: 1em;
+}
+
+.about-bottom h2 {
+    text-align: center;
 }
 
 .team-grid {
@@ -198,6 +240,7 @@ nav {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    animation: slideInFromBottom 0.6s ease-out 0.2s both;
 }
 
 .team-member {
@@ -245,6 +288,7 @@ nav {
     border-radius: 15px;
     margin-bottom: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: slideInFromBottom 0.6s ease-out;
 }
 
 .contact-details {
@@ -252,12 +296,14 @@ nav {
     padding: 2rem;
     border-radius: 15px;
     color: var(--text-color);
+    animation: slideInFromBottom 0.6s ease-out 0.1s both;
 }
 
 .contact-details h3 {
-    color: #0057ff;
+    color: white;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .contact-info {
@@ -281,6 +327,15 @@ nav {
     justify-content: center;
     color: white;
     font-weight: bold;
+}
+
+.contact-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--light-blue);
 }
 
 /* Responsive */
@@ -336,3 +391,16 @@ nav {
         font-size: 1.2rem;
     }
 }
+
+
+.mission-statement + .content-text p {
+    margin-bottom: 1em; /* Add space between paragraphs in mission section */
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+

@@ -4,12 +4,17 @@ function showSection(sectionId, linkElement) {
     sections.forEach(section => section.classList.remove('active'));
     
     // Show selected section
-    document.getElementById(sectionId).classList.add('active');
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
     
     // Update active nav link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => link.classList.remove('active'));
-    linkElement.classList.add('active');
+    if (linkElement) {
+        linkElement.classList.add('active');
+    }
     
     // Initialize map if contact section is shown
     if (sectionId === 'contact' && !window.mapInitialized) {
@@ -19,7 +24,7 @@ function showSection(sectionId, linkElement) {
 }
 
 function initMap() {
-    const map = L.map('map').setView([51.511646645555196, -0.14734593322649123], 15);
+    const map = L.map('map').setView([51.51134955219304, -0.07990677737372326], 15);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
@@ -32,56 +37,35 @@ function initMap() {
         className: 'custom-marker'
     });
     
-    L.marker([51.511646645555196, -0.14734593322649123], {icon: customIcon})
+    L.marker([51.51134955219304, -0.07990677737372326], {icon: customIcon})
         .addTo(map)
-        .bindPopup('<strong>AI Pathfinder HQ</strong><br>123 Technology Street<br>London, WC2N 5DU')
+        .bindPopup('<strong>AI Pathfinder HQ</strong><br>70 Mark Lane<br>London, EC3R 7NB, UK')
         .openPopup();
 }
 
 // Handle initial page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we should show a specific section from session storage
-    const sectionToShow = sessionStorage.getItem('showSection');
-
-    // Also check for hash fragment in URL
     const hash = window.location.hash.substring(1); // Remove the '#'
-    const targetSectionId = sectionToShow || hash || 'home';
+    const initialSection = hash || 'home';
+    const initialNavLink = document.querySelector(`a[href="#${initialSection}"], a[href="index.html#${initialSection}"]`);
+    showSection(initialSection, initialNavLink);
 
-    if (targetSectionId && targetSectionId !== 'home') {
-        // Hide all sections
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => section.classList.remove('active'));
-
-        // Show the requested section
-        const targetSection = document.getElementById(targetSectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        }
-
-        // Update active nav link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => link.classList.remove('active'));
-        const targetNavLink = document.querySelector(`a[href="#${targetSectionId}"], a[href="index.html#${targetSectionId}"]`);
-        if (targetNavLink) {
-            targetNavLink.classList.add('active');
-        }
-
-        // Initialize map if contact section is shown
-        if (targetSectionId === 'contact' && !window.mapInitialized) {
-            initMap();
-            window.mapInitialized = true;
-        }
-    }
-
-    // Clear the session storage
-    if (sectionToShow) {
-        sessionStorage.removeItem('showSection');
-    }
-
-    // Smooth scroll behavior for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Add event listeners for navigation links
+    document.querySelectorAll('.nav-menu a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default anchor click behavior
+            const sectionId = this.getAttribute('href').split('#')[1];
+            showSection(sectionId, this);
+            history.pushState(null, '', `#${sectionId}`); // Update URL hash
         });
     });
 });
+
+// Ensure initial section is displayed on load
+window.addEventListener('load', function() {
+    const hash = window.location.hash.substring(1);
+    const initialSection = hash || 'home';
+    const initialNavLink = document.querySelector(`a[href="#${initialSection}"], a[href="index.html#${initialSection}"]`);
+    showSection(initialSection, initialNavLink);
+});
+
