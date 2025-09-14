@@ -111,51 +111,59 @@
     }, true);
   });
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
+  const honey = form.querySelector("#c-company");
+  if (honey && honey.value.trim() !== "") return;
 
-    const honey = form.querySelector("#c-company");
-    if (honey && honey.value.trim() !== "") return;
+  const firstInvalid = validateFields();
+  if (firstInvalid) {
+    setState("Please fix the highlighted fields.", false);
+    firstInvalid.focus({ preventScroll: false });
+    firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
 
+  // limit check
+  const COOLDOWN_MS = 60 * 1000; 
+  const lastSent = Number(localStorage.getItem("contact_last_sent") || 0);
+  if (Date.now() - lastSent < COOLDOWN_MS) {
+    setState("Please wait a minute before sending again.", false);
+    return;
+  }
 
-    const firstInvalid = validateFields();
-    if (firstInvalid) {
-      setState("Please fix the highlighted fields.", false);
-      firstInvalid.focus({ preventScroll: false });
-      firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
-      return;
-    }
+  const prev = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending…";
 
-    const prev = submitBtn.textContent;
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending…";
+  // Payload
+  const templateParams = {
+    from_name:  form.elements["name"].value.trim(),
+    from_email: form.elements["email"].value.trim(),
+    phone:      form.elements["phone"].value.trim(),
+    message:    form.elements["message"].value.trim(),
+    page_url:   window.location.href,
+    date:       new Date().toLocaleString()
+  };
 
-    // Payload
-    const templateParams = {
-      from_name:  form.elements["name"].value.trim(),
-      from_email: form.elements["email"].value.trim(),
-      phone:      form.elements["phone"].value.trim(),
-      message:    form.elements["message"].value.trim(),
-      page_url:   window.location.href,
-      date:       new Date().toLocaleString()
-    };
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    localStorage.setItem("contact_last_sent", String(Date.now()));
 
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      setState("Message sent. We'll get back to you soon.");
-      // Reset
-      form.reset();
-      [...form.querySelectorAll(".form-control")].forEach(el => {
-        el.classList.remove("is-invalid", "is-valid");
-        clearError(el);
-      });
-    } catch (err) {
-      console.error("[EmailJS] send error:", err);
-      setState("Oops. Something went wrong sending your message.", false);
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = prev;
-    }
-  });
+    setState("Message sent. We'll get back to you soon.");
+    form.reset();
+    [...form.querySelectorAll(".form-control")].forEach(el => {
+      el.classList.remove("is-invalid", "is-valid");
+      clearError(el);
+    });
+  } catch (err) {
+    console.error("[EmailJS] send error:", err);
+    setState("Oops. Something went wrong sending your message.", false);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = prev;
+  }
+});
+
 })();
