@@ -1,105 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Pathfinder - Accelerating Britain's AI Infrastructure</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-        <script src="js/lottie-player.js"></script>
-  </head>
 
-  <body>
-    <!-- mouse animation -->
-      <div class="mouse_mobile" id="mouseRoot"></div>
-      <div class="blur_overlay" aria-hidden="true"></div>
-      <div id="page" class="page">
-            <!-- preloader-->
-        <div id="preloader">
-      <lottie-player
-        src="assets/logo_animation.json"
-        class="logo_animation"
-        background="transparent"
-        speed="1"
-        autoplay
-      ></lottie-player>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Pathfinder - Accelerating Britain's AI Infrastructure</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="js/lottie-player.js"></script>
+</head>
+
+<body>
+  <!-- mouse animation -->
+  <div class="mouse_mobile" id="mouseRoot"></div>
+  <div class="blur_overlay" aria-hidden="true"></div>
+  <div id="page" class="page">
+    <!-- preloader-->
+    <div id="preloader">
+      <lottie-player src="assets/logo_animation.json" class="logo_animation" background="transparent" speed="1"
+        autoplay></lottie-player>
     </div>
     <!-- Navigation -->
     <nav>
       <div class="nav-container">
-        <div class="logo-container">
-          <svg
-            class="brand-logo"
-            width="189"
-            height="39"
-            viewBox="0 0 189 39"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <a href="#home" class="logo-container">
+          <svg class="brand-logo" width="189" height="39" viewBox="0 0 189 39" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.7">
               <path
                 d="M88.3668 14.4538C87.9159 13.6801 87.2675 13.0745 86.4179 12.6409C85.5721 12.2036 84.5399 11.9868 83.3363 11.9868H77.0612V27.1515H80.4261V22.2324H83.2506C84.4728 22.2324 85.5125 22.0193 86.3732 21.5895C87.234 21.1596 87.8935 20.5616 88.3519 19.7916C88.8102 19.0178 89.0375 18.1319 89.0375 17.1227C89.0375 16.1135 88.8139 15.2276 88.3668 14.4538ZM85.2553 18.4459C85.0429 18.8309 84.7299 19.1262 84.3089 19.343C83.8878 19.5561 83.3512 19.6645 82.7028 19.6645H80.4224V14.6071H82.6879C83.3438 14.6071 83.8803 14.7117 84.3051 14.9211C84.7299 15.1266 85.0429 15.4219 85.2553 15.7995C85.4677 16.1807 85.5683 16.6181 85.5683 17.1227C85.5683 17.6273 85.464 18.0609 85.2553 18.4459Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M100.552 17.5189C100.28 17.0367 99.8959 16.6255 99.4301 16.3228C98.9532 16.0088 98.4128 15.7808 97.8055 15.635C97.1943 15.4855 96.5609 15.4107 95.9013 15.4107C94.9437 15.4107 94.109 15.549 93.3898 15.8219C92.6669 16.0985 92.0782 16.4872 91.6198 16.9919C91.1652 17.5002 90.8597 18.0945 90.7069 18.7861L93.7662 19.0215C93.878 18.6478 94.1127 18.3338 94.463 18.0833C94.817 17.8366 95.2902 17.7133 95.8864 17.7133C96.4491 17.7133 96.8851 17.8404 97.1906 18.0983C97.4962 18.3562 97.6527 18.7188 97.6527 19.186V19.2309C97.6527 19.4738 97.5595 19.6533 97.3658 19.7766C97.1757 19.9 96.8664 19.9934 96.4416 20.0532C96.0168 20.1168 95.4579 20.1803 94.7648 20.2476C94.1761 20.3036 93.6097 20.3971 93.0768 20.5279C92.5402 20.6625 92.0633 20.8569 91.6459 21.1223C91.2248 21.3839 90.8932 21.7278 90.651 22.1576C90.4088 22.5875 90.2858 23.1183 90.2858 23.75C90.2858 24.5013 90.461 25.1293 90.8038 25.6302C91.1466 26.131 91.6161 26.5086 92.2123 26.7628C92.8048 27.0207 93.483 27.1478 94.2431 27.1478C94.8319 27.1478 95.3536 27.0693 95.8044 26.9235C96.2553 26.7702 96.6391 26.5609 96.9596 26.2918C97.28 26.0226 97.5372 25.7124 97.7272 25.3536H97.8204V26.931H100.958V19.2608C100.958 18.5842 100.82 18.0011 100.548 17.5189H100.552ZM97.675 22.8679C97.675 23.2678 97.567 23.6266 97.3583 23.9406C97.1459 24.2584 96.8515 24.5088 96.4789 24.6957C96.1063 24.8788 95.6778 24.9723 95.1933 24.9723C94.7089 24.9723 94.2655 24.8602 93.9376 24.6359C93.6097 24.4116 93.4457 24.0864 93.4457 23.6566C93.4457 23.3613 93.5277 23.1108 93.6879 22.9127C93.8481 22.7109 94.0717 22.5539 94.3624 22.438C94.653 22.3184 94.9921 22.2324 95.3797 22.1801C95.5622 22.1539 95.7635 22.1277 95.987 22.0941C96.2106 22.0642 96.4305 22.0268 96.654 21.982C96.8776 21.9409 97.0751 21.8923 97.2577 21.8437C97.4366 21.7913 97.5744 21.7315 97.6788 21.668V22.8753V22.8679H97.675Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M109.569 24.5013C109.487 24.5163 109.368 24.5387 109.212 24.5649C109.055 24.591 108.902 24.606 108.75 24.606C108.526 24.606 108.328 24.5723 108.165 24.5088C107.997 24.4452 107.863 24.3294 107.773 24.1724C107.68 24.0117 107.635 23.7874 107.635 23.4921V12.8876H104.326V23.907C104.319 24.6546 104.487 25.2713 104.815 25.7573C105.146 26.2469 105.608 26.6058 106.208 26.8375C106.804 27.0693 107.505 27.1702 108.302 27.144C108.731 27.1291 109.096 27.0879 109.398 27.0207C109.696 26.9571 109.931 26.8973 110.095 26.8487L109.573 24.5013H109.569ZM102.694 15.6126V17.9824H109.875V15.6126H102.694Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M122.805 17.6161C122.462 16.9769 121.978 16.4835 121.363 16.1434C120.744 15.7995 120.018 15.6275 119.191 15.6275C118.281 15.6275 117.532 15.8182 116.932 16.2032C116.329 16.5882 115.897 17.1115 115.628 17.7843H115.49V11.9868H112.275V27.1515H115.584V20.5765C115.584 20.0868 115.688 19.6682 115.882 19.3206C116.075 18.973 116.344 18.7038 116.69 18.5244C117.033 18.3412 117.432 18.2478 117.883 18.2478C118.557 18.2478 119.079 18.4459 119.455 18.8347C119.831 19.2234 120.014 19.7691 120.01 20.4681V27.1478H123.319V19.9037C123.327 19.0141 123.155 18.2515 122.809 17.6124H122.805V17.6161Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M131.968 11.385C131.547 11.3065 131.081 11.2729 130.574 11.2729C129.825 11.2729 129.155 11.4074 128.566 11.6766C127.977 11.9494 127.508 12.3569 127.169 12.8989C126.833 13.4409 126.662 14.1249 126.662 14.9472V27.144H129.96V15.0108C129.96 14.6258 130.053 14.3267 130.246 14.1099C130.44 13.8969 130.779 13.7885 131.264 13.7885C131.461 13.7885 131.655 13.8072 131.845 13.8408C132.031 13.8744 132.192 13.9118 132.322 13.9529L132.911 11.5831C132.702 11.5233 132.389 11.456 131.968 11.385ZM124.977 15.7733V18.1431H132.337V15.7733H124.977Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M150.782 17.6236C150.443 16.9844 149.962 16.491 149.347 16.1471C148.732 15.7995 148.01 15.6275 147.182 15.6275C146.299 15.6275 145.543 15.8219 144.924 16.2069C144.302 16.5956 143.859 17.119 143.594 17.7806H143.456V15.7733H140.304V27.1478H143.613V20.5728C143.613 20.0831 143.713 19.6645 143.903 19.3168C144.09 18.9692 144.354 18.7001 144.693 18.5207C145.032 18.3375 145.427 18.2441 145.871 18.2441C146.53 18.2441 147.052 18.4422 147.428 18.8347C147.808 19.2271 147.991 19.7729 147.987 20.4681V27.1478H151.296V19.9037C151.296 19.0178 151.125 18.259 150.782 17.6198V17.6236Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M161.778 11.7999V17.5002H161.678C161.532 17.1937 161.32 16.8835 161.044 16.562C160.765 16.2443 160.403 15.9789 159.956 15.7658C159.509 15.549 158.95 15.4406 158.283 15.4406C157.407 15.4406 156.602 15.6574 155.872 16.091C155.138 16.5246 154.553 17.1713 154.113 18.0385C153.674 18.9057 153.454 19.9897 153.454 21.2942C153.454 22.5987 153.666 23.6341 154.091 24.5051C154.516 25.376 155.097 26.0339 155.831 26.4787C156.565 26.9272 157.385 27.1478 158.287 27.1478C158.928 27.1478 159.472 27.0468 159.919 26.845C160.37 26.6431 160.731 26.389 161.014 26.0787C161.298 25.7685 161.517 25.4582 161.674 25.1405H161.812V26.9609H165.072V11.7999H161.774H161.778ZM161.547 23.0473C161.35 23.5519 161.063 23.9406 160.694 24.221C160.321 24.4976 159.87 24.6396 159.337 24.6396C158.805 24.6396 158.335 24.4976 157.966 24.2135C157.597 23.9294 157.314 23.5369 157.12 23.0286C156.927 22.5202 156.83 21.9371 156.83 21.2755C156.83 20.6139 156.923 20.042 157.117 19.5449C157.31 19.044 157.594 18.6552 157.966 18.3749C158.339 18.0945 158.797 17.9562 159.341 17.9562C159.885 17.9562 160.325 18.0908 160.698 18.3599C161.07 18.6328 161.357 19.0178 161.555 19.515C161.748 20.0121 161.845 20.5989 161.845 21.2755C161.845 22.2922 161.748 22.5427 161.547 23.0473Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M178.696 22.0455V21.1783C178.696 20.2102 178.558 19.3654 178.271 18.644C177.984 17.9189 177.585 17.3171 177.078 16.8386C176.564 16.3602 175.957 15.9938 175.293 15.7621C174.612 15.5229 173.881 15.3995 173.091 15.3995C171.921 15.3995 170.904 15.6462 170.036 16.1396C169.182 16.6218 168.486 17.3395 168.02 18.2029C167.543 19.0888 167.308 20.1168 167.308 21.283C167.308 22.4492 167.543 23.522 168.02 24.3967C168.497 25.2751 169.175 25.9516 170.058 26.4263C170.941 26.9011 171.996 27.1403 173.225 27.1403C174.209 27.1403 175.077 26.9982 175.826 26.7067C176.583 26.4189 177.198 26.0152 177.678 25.4919C178.155 24.9723 178.472 24.3593 178.628 23.6603L175.569 23.4697C175.457 23.7575 175.29 23.9967 175.074 24.1948C174.854 24.3929 174.593 24.5424 174.291 24.6396C173.982 24.7368 173.65 24.7891 173.281 24.7891C172.726 24.7891 172.249 24.677 171.847 24.4565C171.44 24.2359 171.131 23.9182 170.911 23.5108C170.691 23.0996 170.583 22.6137 170.583 22.053V22.0455H178.703H178.696ZM170.911 18.973C171.124 18.6066 171.429 18.3113 171.817 18.0908C172.204 17.8703 172.648 17.7619 173.147 17.7619C173.646 17.7619 174.056 17.8591 174.418 18.0609C174.783 18.2627 175.07 18.5356 175.275 18.887C175.483 19.2383 175.584 19.642 175.584 20.0943H170.58C170.598 19.6869 170.71 19.3131 170.911 18.973Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M187.586 15.6425C187.396 15.6238 187.218 15.6163 187.054 15.6163C186.383 15.6163 185.794 15.7957 185.28 16.1583C184.769 16.5246 184.404 17.0591 184.188 17.7619H184.061V15.777H180.857V27.1515H184.162V20.7148C184.162 20.2513 184.274 19.8401 184.494 19.485C184.713 19.1299 185.015 18.8533 185.395 18.6552C185.775 18.4534 186.208 18.3562 186.696 18.3562C186.923 18.3562 187.177 18.3712 187.452 18.4085C187.724 18.4422 187.94 18.4833 188.093 18.5244V15.7247C187.952 15.6911 187.784 15.6612 187.59 15.6425H187.586Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M57.8225 11.9831H53.4888L48 27.1478H51.5996L52.7808 23.6902H58.523L59.7005 27.1478H63.3038L57.8225 11.9831ZM53.6341 21.1895L55.5904 15.4481H55.7134L57.666 21.1895H53.6304H53.6341ZM68.5728 11.9831V27.1478H65.2117V11.9831H68.5728Z"
-                fill="white"
-              />
+                fill="white" />
               <path
                 d="M134.357 15.7733V27.1478H137.662V15.7733H134.357ZM136.719 12.0877L136.842 12.155C137.341 12.4316 137.651 12.9549 137.651 13.5268C137.651 14.0987 137.341 14.6258 136.842 14.8986L136.719 14.9659C136.249 15.2238 135.683 15.2238 135.217 14.9659L135.094 14.8986C134.595 14.622 134.286 14.0987 134.286 13.5268C134.286 12.9549 134.595 12.4279 135.094 12.155L135.217 12.0877C135.687 11.8298 136.253 11.8298 136.719 12.0877Z"
-                fill="white"
-              />
+                fill="white" />
             </g>
             <g clip-path="url(#clip0_6_2)">
               <path
                 d="M40.7857 22.3298C40.9314 21.4123 41 20.469 41 19.5086C41 18.4624 40.9143 17.4248 40.7429 16.4215L39.2602 17.5106C36.7406 19.277 33.741 20.2289 30.6643 20.2203C34.3838 18.5739 37.5291 15.8298 39.5516 12.2968C38.7803 10.4446 37.7176 8.73813 36.4149 7.22032L35.695 8.79815C34.4781 11.5594 32.2841 13.7803 29.6959 15.2296C32.027 12.0567 33.3296 8.23219 33.2782 4.2533C31.6242 3.00132 29.7987 2.0066 27.8533 1.29485L28.0675 2.99274C28.4189 5.99406 27.759 8.94393 26.2335 11.4565C26.6277 7.58047 25.7364 3.62731 23.5939 0.222955C22.5826 0.0771768 21.5456 0 20.4914 0C19.4373 0 18.3832 0.0771768 17.3633 0.222955L18.4003 1.53496C20.2857 3.95317 21.2542 6.80871 21.2542 9.70712C19.5401 6.19987 16.6948 3.24142 13.0782 1.31201C11.1156 2.03232 9.30727 3.03562 7.6875 4.27045L9.25585 4.91359C12.1526 6.07124 14.4923 8.15501 16.0178 10.6247C12.624 8.37797 8.64737 7.19459 4.57651 7.21174C3.27383 8.73813 2.21112 10.4617 1.4398 12.314L3.10242 12.1253C6.25627 11.7909 9.3587 12.4169 11.9983 13.8661C7.97032 13.5317 3.83089 14.3806 0.257107 16.4215C0.0857024 17.4248 0 18.4453 0 19.4914C0 20.469 0.0771321 21.4294 0.222826 22.3641L1.62834 21.3608C4.1737 19.5686 7.22471 18.6511 10.2243 18.6511C6.52195 20.2889 3.39381 23.0158 1.37124 26.4888C2.12542 28.3582 3.17099 30.0818 4.46509 31.6253L5.19356 30.0218C6.41053 27.2691 8.60452 25.0396 11.1927 23.5904C8.84448 26.7975 7.54181 30.6563 7.64465 34.6781C9.26442 35.9215 11.0727 36.9334 13.0439 37.6623L12.8211 35.8786C12.4697 32.8773 13.1296 29.9274 14.6551 27.4149C14.2609 31.3423 15.1693 35.3384 17.3719 38.7685C18.3917 38.9228 19.4459 39 20.5086 39C21.5713 39 22.5997 38.9228 23.6196 38.777L22.4883 37.3364C20.6114 34.9182 19.643 32.0627 19.643 29.1642C21.3742 32.7058 24.2623 35.7328 27.9732 37.6708C29.9358 36.942 31.7441 35.9387 33.3554 34.6953L31.6413 33.9492C28.7446 32.7916 26.4049 30.7078 24.8794 28.1953C28.1361 30.3734 32.0527 31.5825 36.1235 31.5825H36.612C37.8804 30.0561 38.9174 28.3325 39.663 26.4802L37.7519 26.7032C34.598 27.0376 31.4956 26.4116 28.8474 24.9624C29.413 25.0139 30.0215 25.0567 30.5786 25.0567C34.1267 25.0567 37.6748 24.1563 40.8029 22.3298H40.7857ZM20.4486 24.285C17.6547 24.285 15.3664 22.1069 15.3664 19.4485C15.3664 16.7902 17.6547 14.6121 20.4486 14.6121C23.2425 14.6121 25.5307 16.7902 25.5307 19.4485C25.5307 22.1069 23.2425 24.285 20.4486 24.285Z"
-                fill="url(#paint0_linear_6_2)"
-              />
+                fill="url(#paint0_linear_6_2)" />
             </g>
             <defs>
-              <linearGradient
-                id="paint0_linear_6_2"
-                x1="38.0518"
-                y1="29.6445"
-                x2="2.94656"
-                y2="9.37315"
-                gradientUnits="userSpaceOnUse"
-              >
+              <linearGradient id="paint0_linear_6_2" x1="38.0518" y1="29.6445" x2="2.94656" y2="9.37315"
+                gradientUnits="userSpaceOnUse">
                 <stop stop-color="#0057FF" />
                 <stop offset="1" stop-color="#01FFF9" />
               </linearGradient>
@@ -108,265 +77,329 @@
               </clipPath>
             </defs>
           </svg>
-        </div>
-        <div class="logo-container_mobile">
-<svg width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1_102)">
-<path d="M40.7857 22.3298C40.9314 21.4123 41 20.469 41 19.5086C41 18.4624 40.9143 17.4248 40.7429 16.4215L39.2602 17.5106C36.7406 19.277 33.741 20.2289 30.6643 20.2203C34.3838 18.5739 37.5291 15.8298 39.5516 12.2968C38.7803 10.4446 37.7176 8.73813 36.4149 7.22032L35.695 8.79815C34.4781 11.5594 32.2841 13.7803 29.6959 15.2296C32.027 12.0567 33.3296 8.23219 33.2782 4.2533C31.6242 3.00132 29.7987 2.0066 27.8533 1.29485L28.0675 2.99274C28.4189 5.99406 27.759 8.94393 26.2335 11.4565C26.6277 7.58047 25.7364 3.62731 23.5939 0.222955C22.5826 0.0771768 21.5456 0 20.4914 0C19.4373 0 18.3832 0.0771768 17.3633 0.222955L18.4003 1.53496C20.2857 3.95317 21.2542 6.80871 21.2542 9.70712C19.5401 6.19987 16.6948 3.24142 13.0782 1.31201C11.1156 2.03232 9.30727 3.03562 7.6875 4.27045L9.25585 4.91359C12.1526 6.07124 14.4923 8.15501 16.0178 10.6247C12.624 8.37797 8.64737 7.19459 4.57651 7.21174C3.27383 8.73813 2.21112 10.4617 1.4398 12.314L3.10242 12.1253C6.25627 11.7909 9.3587 12.4169 11.9983 13.8661C7.97032 13.5317 3.83089 14.3806 0.257107 16.4215C0.0857024 17.4248 0 18.4453 0 19.4914C0 20.469 0.0771321 21.4294 0.222826 22.3641L1.62834 21.3608C4.1737 19.5686 7.22471 18.6511 10.2243 18.6511C6.52195 20.2889 3.39381 23.0158 1.37124 26.4888C2.12542 28.3582 3.17099 30.0818 4.46509 31.6253L5.19356 30.0218C6.41053 27.2691 8.60452 25.0396 11.1927 23.5904C8.84448 26.7975 7.54181 30.6563 7.64465 34.6781C9.26442 35.9215 11.0727 36.9334 13.0439 37.6623L12.8211 35.8786C12.4697 32.8773 13.1296 29.9274 14.6551 27.4149C14.2609 31.3423 15.1693 35.3384 17.3719 38.7685C18.3917 38.9228 19.4459 39 20.5086 39C21.5713 39 22.5997 38.9228 23.6196 38.777L22.4883 37.3364C20.6114 34.9182 19.643 32.0627 19.643 29.1642C21.3742 32.7058 24.2623 35.7328 27.9732 37.6708C29.9358 36.942 31.7441 35.9387 33.3554 34.6953L31.6413 33.9492C28.7446 32.7916 26.4049 30.7078 24.8794 28.1953C28.1361 30.3734 32.0527 31.5825 36.1235 31.5825H36.612C37.8804 30.0561 38.9174 28.3325 39.663 26.4802L37.7519 26.7032C34.598 27.0376 31.4956 26.4116 28.8474 24.9624C29.413 25.0139 30.0215 25.0567 30.5786 25.0567C34.1267 25.0567 37.6748 24.1563 40.8029 22.3298H40.7857ZM20.4486 24.285C17.6547 24.285 15.3664 22.1069 15.3664 19.4485C15.3664 16.7902 17.6547 14.6121 20.4486 14.6121C23.2425 14.6121 25.5307 16.7902 25.5307 19.4485C25.5307 22.1069 23.2425 24.285 20.4486 24.285Z" fill="url(#paint0_linear_1_102)"/>
-</g>
-<defs>
-<linearGradient id="paint0_linear_1_102" x1="38.0518" y1="29.6445" x2="2.94656" y2="9.37315" gradientUnits="userSpaceOnUse">
-<stop stop-color="#0057FF"/>
-<stop offset="1" stop-color="#01FFF9"/>
-</linearGradient>
-<clipPath id="clip0_1_102">
-<rect width="41" height="39" fill="white"/>
-</clipPath>
-</defs>
-</svg>
+        </a>
+        <a href="#home" class="logo-container_mobile">
+          <svg width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_102)">
+              <path
+                d="M40.7857 22.3298C40.9314 21.4123 41 20.469 41 19.5086C41 18.4624 40.9143 17.4248 40.7429 16.4215L39.2602 17.5106C36.7406 19.277 33.741 20.2289 30.6643 20.2203C34.3838 18.5739 37.5291 15.8298 39.5516 12.2968C38.7803 10.4446 37.7176 8.73813 36.4149 7.22032L35.695 8.79815C34.4781 11.5594 32.2841 13.7803 29.6959 15.2296C32.027 12.0567 33.3296 8.23219 33.2782 4.2533C31.6242 3.00132 29.7987 2.0066 27.8533 1.29485L28.0675 2.99274C28.4189 5.99406 27.759 8.94393 26.2335 11.4565C26.6277 7.58047 25.7364 3.62731 23.5939 0.222955C22.5826 0.0771768 21.5456 0 20.4914 0C19.4373 0 18.3832 0.0771768 17.3633 0.222955L18.4003 1.53496C20.2857 3.95317 21.2542 6.80871 21.2542 9.70712C19.5401 6.19987 16.6948 3.24142 13.0782 1.31201C11.1156 2.03232 9.30727 3.03562 7.6875 4.27045L9.25585 4.91359C12.1526 6.07124 14.4923 8.15501 16.0178 10.6247C12.624 8.37797 8.64737 7.19459 4.57651 7.21174C3.27383 8.73813 2.21112 10.4617 1.4398 12.314L3.10242 12.1253C6.25627 11.7909 9.3587 12.4169 11.9983 13.8661C7.97032 13.5317 3.83089 14.3806 0.257107 16.4215C0.0857024 17.4248 0 18.4453 0 19.4914C0 20.469 0.0771321 21.4294 0.222826 22.3641L1.62834 21.3608C4.1737 19.5686 7.22471 18.6511 10.2243 18.6511C6.52195 20.2889 3.39381 23.0158 1.37124 26.4888C2.12542 28.3582 3.17099 30.0818 4.46509 31.6253L5.19356 30.0218C6.41053 27.2691 8.60452 25.0396 11.1927 23.5904C8.84448 26.7975 7.54181 30.6563 7.64465 34.6781C9.26442 35.9215 11.0727 36.9334 13.0439 37.6623L12.8211 35.8786C12.4697 32.8773 13.1296 29.9274 14.6551 27.4149C14.2609 31.3423 15.1693 35.3384 17.3719 38.7685C18.3917 38.9228 19.4459 39 20.5086 39C21.5713 39 22.5997 38.9228 23.6196 38.777L22.4883 37.3364C20.6114 34.9182 19.643 32.0627 19.643 29.1642C21.3742 32.7058 24.2623 35.7328 27.9732 37.6708C29.9358 36.942 31.7441 35.9387 33.3554 34.6953L31.6413 33.9492C28.7446 32.7916 26.4049 30.7078 24.8794 28.1953C28.1361 30.3734 32.0527 31.5825 36.1235 31.5825H36.612C37.8804 30.0561 38.9174 28.3325 39.663 26.4802L37.7519 26.7032C34.598 27.0376 31.4956 26.4116 28.8474 24.9624C29.413 25.0139 30.0215 25.0567 30.5786 25.0567C34.1267 25.0567 37.6748 24.1563 40.8029 22.3298H40.7857ZM20.4486 24.285C17.6547 24.285 15.3664 22.1069 15.3664 19.4485C15.3664 16.7902 17.6547 14.6121 20.4486 14.6121C23.2425 14.6121 25.5307 16.7902 25.5307 19.4485C25.5307 22.1069 23.2425 24.285 20.4486 24.285Z"
+                fill="url(#paint0_linear_1_102)" />
+            </g>
+            <defs>
+              <linearGradient id="paint0_linear_1_102" x1="38.0518" y1="29.6445" x2="2.94656" y2="9.37315"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0057FF" />
+                <stop offset="1" stop-color="#01FFF9" />
+              </linearGradient>
+              <clipPath id="clip0_1_102">
+                <rect width="41" height="39" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
 
-        </div>
+        </a>
 
-        <button
-          class="nav-toggle"
-          aria-label="Toggle menu"
-          aria-expanded="false"
-          aria-controls="primary-menu"
-        >
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-menu">
           <span class="nav-toggle__bar"></span>
           <span class="nav-toggle__bar"></span>
           <span class="nav-toggle__bar"></span>
         </button>
-         <div id="primary-menu" class="nav-collapsible" hidden>
-        <ul class="nav-menu">
-          <li>
-            <a
-              href="#home"
-              class="nav-link active"
-              onclick="showSection('home', this)"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#mission"
-              class="nav-link"
-              onclick="showSection('mission', this)"
-              >Mission</a
-            >
-          </li>
-          <li>
-            <a
-              href="#about"
-              class="nav-link"
-              onclick="showSection('about', this)"
-              >About</a
-            >
-          </li>
-        </ul>
-        <div class="contact-btn-container">
-          <a
-            href="#contact"
-            class="nav-link contact-btn"
-            onclick="showSection('contact', this)"
-            >Contact</a
-          >
-        </div>
+        <div id="primary-menu" class="nav-collapsible" hidden>
+          <ul class="nav-menu">
+            <li>
+              <a href="#home" class="nav-link active">Home</a>
+            </li>
+            <li>
+              <a href="#mission" class="nav-link">Mission</a>
+            </li>
+            <li>
+              <a href="#about" class="nav-link" >About</a>
+            </li>
+          </ul>
+          <div class="contact-btn-container">
+            <a href="#contact" class="nav-link contact-btn" >Contact</a>
+          </div>
         </div>
       </div>
     </nav>
     <!-- Home Section -->
     <section id="home" class="section active ">
-        <div class="hero">
-          <div class="container">
-            <div>
-              <div class="caption">
-<p class="white">Welcome to AI Pathfinder</p>              </div>
-              <h1 class="white">AI Sovereignty. <br>
-<span class="text-gradient">Global Transformation.</span></h1>
-<p class="white">AI Pathfinder delivers next-generation AI-as-a-Service to empower leaders in healthcare, finance, defence, logistics, FMCG, and beyond. Our sovereign infrastructure safeguards data, while our decades of expertise ensure ethical, secure, and impactful AI—driving innovation, unlocking value, and reshaping industries worldwide.</p>
+      <div class="hero">
+        <div class="container">
+          <div>
+            <div class="caption">
+              <p class="white">Welcome to AI Pathfinder</p>
             </div>
+            <h1 class="white">AI Sovereignty. <br>
+              <span class="text-gradient">Global Transformation.</span>
+            </h1>
+            <p class="white">AI Pathfinder delivers next-generation AI-as-a-Service to empower leaders in healthcare,
+              finance, defence, logistics, FMCG, and beyond.Our sovereign infrastructure safeguards data, while our
+              decades of expertise ensure ethical, secure, and impactful AI—driving innovation, unlocking value, and
+              reshaping industries worldwide.</p>
           </div>
         </div>
+      </div>
     </section>
 
     <!-- Mission Section -->
     <section id="mission" class="section nav-offset">
-        <div class="container">
-            <div class="content-card">
-                <div class="mission-statement">
-                    <h2>Our Mission</h2>
-                    <p class="mission-text">
-                        <strong>AI Pathfinder commits to delivering 2GW of sovereign UK AI infrastructure</strong>
-                    </p>
-                </div>
-                <div class="content-text">
+      <div class="container">
+        <div class="content-card">
+          <div class="mission-statement">
+            <h2>Our Mission</h2>
+            <p class="mission-text">
+              <strong>AI Pathfinder commits to delivering 2GW of sovereign UK AI infrastructure</strong>
+            </p>
+          </div>
+          <div class="content-text">
 
-                    <p>Company announces £15bn long-term investment in West Scotland, following first deployment in
-                        Northamptonshire in 2025</p>
+            <p>Company announces £15bn long-term investment in West Scotland, following first deployment in
+              Northamptonshire in 2025</p>
 
-                    <p>AI Pathfinder, a UK-based company, has received Government endorsement for its mission to
-                        contribute significantly to the UK’s AI Growth Zones strategy. The company is committing to
-                        deliver up to 2GW of sovereign AI supercomputing capacity at its AI Factories in the UK,
-                        representing a major contribution towards national AI sovereignty objectives.</p>
+            <p>AI Pathfinder, a UK-based company, has received Government endorsement for its mission to
+              contribute significantly to the UK’s AI Growth Zones strategy. The company is committing to
+              deliver up to 2GW of sovereign AI supercomputing capacity at its AI Factories in the UK,
+              representing a major contribution towards national AI sovereignty objectives.</p>
 
-                    <p>As part of this vision, AI Pathfinder plans to invest £15bn in West Scotland, beginning with an
-                        initial £385m investment from 2026 that will mark the start of operations at its North Ayrshire
-                        site. This 1GW site is expected to scale into one of the largest AI infrastructure hubs in
-                        Europe, with the future potential to expand to 1.5GW.</p>
+            <p>As part of this vision, AI Pathfinder plans to invest £15bn in West Scotland, beginning with an
+              initial £385m investment from 2026 that will mark the start of operations at its North Ayrshire
+              site. This 1GW site is expected to scale into one of the largest AI infrastructure hubs in
+              Europe, with the future potential to expand to 1.5GW.</p>
 
-                    <p>Working closely with Dell and Nvidia the company will launch its first UK deployment in
-                        December 2025 in Northamptonshire, with an investment of up to £3.4bn and will mark the
-                        commencement of its national operations.</p>
+            <p>Working closely with Dell and Nvidia the company will launch its first UK deployment in
+              December 2025 in Northamptonshire, with an investment of up to £3.4bn and will mark the
+              commencement of its national operations.</p>
 
-                    <p>Martin Bellamy, Chairman of AI Pathfinder, said:</p>
+            <p>Martin Bellamy, Chairman of AI Pathfinder, said:</p>
 
-                    <p>“We’ve been tracking the inflection point where slow or non-adoption of AI becomes an
-                        existential risk for government, the private sector, and public services – and that point is now
-                        in sight. Sovereign capability is becoming not just strategic, but essential.</p>
+            <p>“We’ve been tracking the inflection point where slow or non-adoption of AI becomes an
+              existential risk for government, the private sector, and public services – and that point is now
+              in sight. Sovereign capability is becoming not just strategic, but essential.</p>
 
-                    <p>Our UK-based AI-as-a-Service platform will allow government, businesses, and public services to
-                        innovate at the speed of hyperscalers, with the security and data privacy of a sovereign
-                        solution. AI Pathfinder’s mission to provide the infrastructure to deliver sovereign
-                        AI-as-a-Service is a critical part of ensuring the UK is at the forefront of the AI-powered
-                        global economy.”</p>
+            <p>Our UK-based AI-as-a-Service platform will allow government, businesses, and public services to
+              innovate at the speed of hyperscalers, with the security and data privacy of a sovereign
+              solution. AI Pathfinder’s mission to provide the infrastructure to deliver sovereign
+              AI-as-a-Service is a critical part of ensuring the UK is at the forefront of the AI-powered
+              global economy.”</p>
 
-                    <p>AI Pathfinder is a first of its kind fully integrated business, building AI Factories from the
-                        ground up, enabling clients to transform their operations, driving efficiencies, productivity
-                        and profitability, while improving the lives of those they impact. Caroline Yap, AI Pathfinder’s
-                        Chief Transformation Officer commented, “AI-as-a-Service is the best way to leverage and utilise
-                        this rapid pace of innovation. Whether deployed in the public or private sector, this is the
-                        time of adoption and transformation”.</p>
+            <p>AI Pathfinder is a first of its kind fully integrated business, building AI Factories from the
+              ground up, enabling clients to transform their operations, driving efficiencies, productivity
+              and profitability, while improving the lives of those they impact. Caroline Yap, AI Pathfinder’s
+              Chief Transformation Officer commented, “AI-as-a-Service is the best way to leverage and utilise
+              this rapid pace of innovation. Whether deployed in the public or private sector, this is the
+              time of adoption and transformation”.</p>
 
-                    <p>AI Pathfinder will be an EMEA focused business and will look to work with a limited number of
-                        Enterprise Clients in key sectors; Defence & Intelligence, Health, Financial Services,
-                        Logistics, Insurance and FMCG. Bradd Lewis, Chief Transformation & Revenue Officer commented “We
-                        aim to build deep and long lasting relationships with enterprise clients who understand the need
-                        to transform their business through the adoption of AI. Those that do this will be leading the
-                        pack in their sector”.</p>
+            <p>AI Pathfinder will be an EMEA focused business and will look to work with a limited number of
+              Enterprise Clients in key sectors; Defence & Intelligence, Health, Financial Services,
+              Logistics, Insurance and FMCG. Bradd Lewis, Chief Transformation & Revenue Officer commented “We
+              aim to build deep and long lasting relationships with enterprise clients who understand the need
+              to transform their business through the adoption of AI. Those that do this will be leading the
+              pack in their sector”.</p>
 
-                    <p>AI Pathfinder controls multiple sites across the country with tenured experience of delivering
-                        complex projects. The AI Pathfinder Team is drawn from all areas of the technology and
-                        infrastructure world, making its approach to AI-as-a-Service unique. </p>
-                </div>
-            </div>
+            <p>AI Pathfinder controls multiple sites across the country with tenured experience of delivering
+              complex projects. The AI Pathfinder Team is drawn from all areas of the technology and
+              infrastructure world, making its approach to AI-as-a-Service unique. </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
-     <section id="about" class="section nav-offset">
-        <div class="container">
-            <div class="">
-                <div class="about-statement white">
-                                       <div class="caption">
-<p class="white">About</p>              
-</div>
-
-                    <h1 class="title-gradient">AI Pathfinder</h1>
-                    <div class="about-text">
-                        <p>AI Pathfinder is a vertically integrated technology company delivering AI-as-a-Service to
-                            transform businesses, unlock value, and change lives.</p>
-
-                        <p>Our sovereign infrastructure will ensure
-                            that client data remains secure. We aim to serve global leaders across multiple industries
-                            including healthcare, financial services, defence, logistics, FMCG, and insurance.</p>
-
-                        <p>Backed by decades of combined experience in land, power, high tech systems product and solution
-                            development, the Executive Team at AI Pathfinder believe that AI must be deployed ethically,
-                            securely, and sovereignly—across both public and private sectors.</p>
-                    </div>
-                </div>
-
-                <div class="about-bottom">
-              
-                     <div class="caption center">
-<p class="white">Our Team</p>              
-</div>
-                    <div class="team-grid">
-                           <div  class="team-member" >
-                            <div class="team-photo"><img src="assets/img/martin_bellamy.jpeg" alt="Martin Bellamy"></div>
-                            <div class="info">
-                              <div>
-                            <h3>Martin Bellamy</h3>
-                            <p>CEO</p>
-                            </div>
-                            <a class="linkedin" href="https://www.linkedin.com/in/martin-bellamy-43539861/" target="_blank">
-                             <img  src="assets/img/linkedin_logo.svg" alt="">
-                            </a>
-                            </div>
-                           </div>
-                        <div  class="team-member">
-                            <div class="team-photo"><img src="assets/img/martin_whiteley.jpeg" alt="Martin Whitely"></div>
-                            <div class="info">
-                               <div>
-                            <h3>Martin Whitely</h3>
-                            <p>COO</p>
-                            </div>
-                             <a class="linkedin" href="https://uk.linkedin.com/in/martin-whiteley-49024938" target="_blank">
-                             <img  src="assets/img/linkedin_logo.svg" alt="">
-                            </a>
-                            </div>
-                          </div>
-                        <div class="team-member">
-                            <div class="team-photo"><img src="assets/img/caroline_yap.jpg" alt="Caroline Yap"></div>
-                            <div class="info">
-                                <div>
-                            <h3>Caroline Yap</h3>
-                            <p>CTO</p>
-                            </div>
-                             <a class="linkedin" href="https://www.linkedin.com/in/cloudofcaroline"  target="_blank">
-                             <img  src="assets/img/linkedin_logo.svg" alt="">
-                            </a>
-                            </div>
-                        </div>
-                        <div class="team-member" >
-                            <div class="team-photo"><img src="assets/img/maciej_mazur.jpeg" alt="Maciej Mazur"></div>
-                            <div class="info">
-                              <div>
-                            <h3>Maciej Mazur</h3>
-                            <p>CAIO</p>
-                            </div>
-                             <a class="linkedin" href="https://www.linkedin.com/in/mm4zur/"  target="_blank">
-                             <img  src="assets/img/linkedin_logo.svg" alt="">
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section id="about" class="section nav-offset">
+      <div class="container">
+        <div class="">
+          <div class="about-statement white">
+            <div class="caption">
+              <p class="white">About</p>
             </div>
+
+            <h1 class="title-gradient">AI Pathfinder</h1>
+            <div class="about-text">
+              <p>AI Pathfinder is a vertically integrated technology company delivering AI-as-a-Service to
+                transform businesses, unlock value, and change lives.</p>
+
+              <p>Our sovereign infrastructure will ensure
+                that client data remains secure. We aim to serve global leaders across multiple industries
+                including healthcare, financial services, defence, logistics, FMCG, and insurance.</p>
+
+              <p>Backed by decades of combined experience in land, power, high tech systems product and solution
+                development, the Executive Team at AI Pathfinder believe that AI must be deployed ethically,
+                securely, and sovereignly—across both public and private sectors.</p>
+            </div>
+          </div>
+
+          <div class="about-bottom">
+
+            <div class="caption center">
+              <p class="white">Our Team</p>
+            </div>
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="team-photo vertical"><img src="assets/img/martin_bellamy.jpeg" alt="Martin Bellamy"></div>
+                <div class="info">
+                  <div>
+                    <h3>Martin Bellamy</h3>
+                    <p>CEO</p>
+                  </div>
+                  <a class="linkedin" href="https://www.linkedin.com/in/martin-bellamy-43539861/" target="_blank">
+                    <img src="assets/img/linkedin_logo.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="team-member">
+                <div class="team-photo"><img src="assets/img/martin_whiteley.jpeg" alt="Martin Whitely"></div>
+                <div class="info">
+                  <div>
+                    <h3>Martin Whitely</h3>
+                    <p>COO</p>
+                  </div>
+                  <a class="linkedin" href="https://uk.linkedin.com/in/martin-whiteley-49024938" target="_blank">
+                    <img src="assets/img/linkedin_logo.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="team-member">
+                <div class="team-photo"><img src="assets/img/caroline_yap.jpg" alt="Caroline Yap"></div>
+                <div class="info">
+                  <div>
+                    <h3>Caroline Yap</h3>
+                    <p>CTO</p>
+                  </div>
+                  <a class="linkedin" href="https://www.linkedin.com/in/cloudofcaroline" target="_blank">
+                    <img src="assets/img/linkedin_logo.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="team-member">
+                <div class="team-photo"><img src="assets/img/maciej_mazur.jpeg" alt="Maciej Mazur"></div>
+                <div class="info">
+                  <div>
+                    <h3>Maciej Mazur</h3>
+                    <p>CAIO</p>
+                  </div>
+                  <a class="linkedin" href="https://www.linkedin.com/in/mm4zur/" target="_blank">
+                    <img src="assets/img/linkedin_logo.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="team-member">
+                <div class="team-photo"><img src="assets/img/bradd_lewis.jpg" alt="Bradd Lewis"></div>
+                <div class="info">
+                  <div>
+                    <h3>Bradd Lewis</h3>
+                    <p>Chief Transformation Officer</p>
+                  </div>
+                  <a class="linkedin" href="https://www.linkedin.com/in/braddl/" target="_blank">
+                    <img src="assets/img/linkedin_logo.svg" alt="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section nav-offset">
-        <div class="container">
-            <div class="content-card">
-                <h3>Contact Us</h3>
-                <div id="map"></div>
-                <div class="contact-details">
-                    <h3>Get in touch</h3>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <p>70 Mark Lane, London, EC3R 7NB, UK</p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <p><a href="mailto:erc@aipathfinder.ai">contact@aipathfinder.ai</a></p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <p>+44 790 841 07 57</p>
-                        </div>
-                    </div>
+      <div class="container">
+        <div>
+          <h3>Contact Us</h3>
+          <div class="contact-container">
+            <div class="contact-details">
+              <h3>Get in touch</h3>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-icon">📍</div>
+                  <p>70 Mark Lane, London, EC3R 7NB, UK</p>
                 </div>
+                <div class="contact-item">
+                  <div class="contact-icon">📧</div>
+                  <p><a href="mailto:info@aipathfinder.ai">info@aipathfinder.ai</a></p>
+                </div>
+                   <div class="contact-item">
+                  <div class="contact-icon">📧</div>
+                  <p>
+                    Press & Media Relations: <a href="mailto:pr@aipathfinder.ai">pr@aipathfinder.ai</a></p>
+                </div>
+                   <div class="contact-item">
+                  <div class="contact-icon">📧</div>
+                  <p>Investor Relations: <a href="mailto:ir@aipathfinder.ai">ir@aipathfinder.ai</a></p>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon">📞</div>
+                  <p>+44 790 841 07 57</p>
+                </div>
+              </div>
             </div>
+            <div id="map" class="map">
+              <div class="map-title">
+                Main
+              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.091412305035!2d-0.14989868731315426!3d51.51153891028299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876052c709b5805%3A0xa6274b071c005564!2s58%20Grosvenor%20St%2C%20London%20W1K%203JB%2C%20Reino%20Unido!5e0!3m2!1ses-419!2sde!4v1757861705690!5m2!1ses-419!2sde"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div id="map" class="map">
+              <div class="map-title">
+                Secondary
+              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.1078839864213!2d-0.0823338873131787!3d51.51123671030477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034db71babc3%3A0x5995c9221c177bac!2s70%20Mark%20Ln%2C%20London%20EC3R%207NB%2C%20Reino%20Unido!5e0!3m2!1ses-419!2sde!4v1757861441817!5m2!1ses-419!2sde"
+                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+      <!-- contact form -->
+<div class="form container">
+  <form id="contact-form" class="contact-form" action="#!" method="post" novalidate>
+
+   <label for="c-name" class="form-label grey">Full Name <span class="green">*</span></label>
+<input id="c-name" name="name" type="text" class="form-control" required aria-describedby="c-name-hint">
+    <span id="c-name-hint" class="input-hint">Please enter your full name.</span>
+
+<div class="row">
+  <div>
+    <label for="c-email" class="form-label grey">Email <span class="green">*</span></label>
+    <input id="c-email" name="email" type="email" class="form-control" required aria-describedby="c-email-hint">
+    <span id="c-email-hint" class="input-hint">Please enter a valid email.</span>
+
+</div>
+<div>
+    <label for="c-phone" class="form-label grey">Phone</label>
+    <input id="c-phone" name="phone" type="tel" class="form-control">
     </div>
-    <script src="js/intro.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/navbar.js"></script>
-  </body>
+</div>
+    <label for="c-msg" class="form-label grey">Message <span class="green">*</span></label>
+    <textarea id="c-msg" name="message" rows="4" class="form-control" required aria-describedby="c-msg-hint"></textarea>
+    <span id="c-msg-hint" class="input-hint">Please write a brief message.</span>
+
+    <div class="form-actions">
+      <button class="contact-btn" type="submit">Send</button>
+    </div>
+    <input type="text" name="company" id="c-company" autocomplete="off" tabindex="-1"
+       style="position:absolute;left:-5000px;">
+
+    <p id="form-feedback" class="white" style="opacity:.8; display:none;"></p>
+  </form>
+</div>
+
+    </section>
+  </div>
+  <script src="js/intro.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/navbar.js"></script>
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script src="js/mail.js"></script>
+
+</body>
+
 </html>
