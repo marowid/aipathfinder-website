@@ -66,9 +66,19 @@ h1{
     font-size: 60px;
     line-height: 60px;
 }
+.title-gradient{
+  background: linear-gradient(135deg, var(--white), var(--light-gray));
+  background-size: 100% auto;     
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px !important;
+}
 .text-gradient {
   background: linear-gradient(135deg, #0057ff, #01fff9);
-  background-size: 180% auto;     /* el doble para que pueda moverse */
+  background-size: 180% auto;    
   background-position: 0% center;
 
   -webkit-background-clip: text;
@@ -89,10 +99,16 @@ h1{
 }
 .caption {
   display: inline-block;
-  padding: 0.25rem 0.6rem;
+  padding: 0.3rem 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
   border-radius: 100px;
   background: var(--blue-transparent);
+  margin-bottom: 20px;
+}
+.center {
+  display: table;
+  margin: 0 auto;
 }
 .nav-offset {
   padding-top: 120px;
@@ -432,7 +448,16 @@ ease-out;
     margin-bottom: 2rem;
     border-bottom: 2px solid #e0e0e0;
 }
-
+.about-bottom{
+  margin-top: 100px;
+}
+.about-statement{
+  text-align: center;
+}
+.about-text{
+  text-align: left;
+  margin-bottom: 20px;
+}
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -445,9 +470,9 @@ ease-out;
     text-decoration: none;
     color: inherit;
     transition: transform 0.3s ease;
-    padding: 1.5rem;
     border-radius: 15px;
-    background: var(--light-gray);
+    position: relative;
+    min-height: 100px;
 }
 
 .team-member:hover {
@@ -455,33 +480,79 @@ ease-out;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+
 .team-photo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #0057ff, #01fff9);
-    margin: 0 auto 1rem;
+height: 250px;
+    position: relative;
+    left: 0px;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 2rem;
     font-weight: bold;
+    overflow: hidden;
 }
 .team-photo img {
-    width: 100%;
+
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+      filter: grayscale(100%);
+    border-radius: 15px 15px 0px 0px;
+   
+
+}
+.info{
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+    flex-wrap: nowrap;
+        align-items: center;
+    justify-content: space-around;
+background-color: var(--background-dark-blue);
+
+  left: 0px;
+  bottom: 0px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+   border-radius: 0px 0px 15px 15px;
+}
+.linkedin{
+  background-color: var(--blue-transparent);
+  aspect-ratio: 1/1;
+  height: 40px;
+  border-radius: 100px;
+  padding: 5px;
+    display: flex;
+    justify-content: center;
+transition: all 0.3s ease-in-out;
+
+}
+.team-member:hover .linkedin{
+   background-color: var(--blue-transparent-40);
+}
+.linkedin:hover{
+  transform: scale(1.1);
+}
+.linkedin img{
+  width: 60%;
+transition: all 0.3s ease-in-out;
+
+
 }
 .team-member h3 {
-    color: var(--dark-gray);
-    margin-bottom: 0.5rem;
+    color: var(--white);
+    margin-bottom: 0.rem;
+      text-align: left;
 }
 
 .team-member p {
-    color: #666;
+    color: var(--light-gray);
     font-size: 0.9rem;
+      text-align: left;
 }
 
 /* Contact Section */
