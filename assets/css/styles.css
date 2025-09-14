@@ -296,13 +296,16 @@ nav {
     to { opacity: 1; transform: translateY(0); }
 }
 
+
 .content-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(33, 37, 41, 0.95);
     border-radius: 20px;
     padding: 3rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin: 2rem 0;
+    animation: slideInFromBottom 0.6s 
+ease-out;
 }
 
 /* Home Section */
@@ -328,7 +331,7 @@ nav {
   min-height: 100svh;
   background:
     linear-gradient(to bottom, #050a1280 0%, #050A12 100%),
-    url("/assets/img/grid_background.svg");
+    url("assets/img/grid_background.svg");
   background-repeat: no-repeat, no-repeat;
   background-position: top, center -50px; 
   background-size: 100% , var(--hero-zoom) auto; 
@@ -420,7 +423,9 @@ nav {
     max-width: 800px;
     margin: 0 auto;
 }
-
+.content-text p {
+    margin-bottom: 2em;
+}
 /* About Section */
 .about-top {
     padding-bottom: 2rem;
