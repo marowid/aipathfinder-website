@@ -1,4 +1,4 @@
-const INTRO_MS = 4000;                   
+const INTRO_MS = 3200;                   
 const THRESHOLD_MS = 60 * 60 * 1000;     
 const LS_KEY = "lastVisitAt";
 const FADE_MS = 600;                  

@@ -328,7 +328,7 @@ nav {
   min-height: 100svh;
   background:
     linear-gradient(to bottom, #050a1280 0%, #050A12 100%),
-    url("grid_background.svg");
+    url("/assets/img/grid_background.svg");
   background-repeat: no-repeat, no-repeat;
   background-position: top, center -50px; 
   background-size: 100% , var(--hero-zoom) auto; 
