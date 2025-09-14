@@ -17,10 +17,10 @@ function showSection(sectionId, linkElement) {
     }
     
     // Initialize map if contact section is shown
-    if (sectionId === 'contact' && !window.mapInitialized) {
-        initMap();
-        window.mapInitialized = true;
-    }
+    // if (sectionId === 'contact' && !window.mapInitialized) {
+    //     initMap();
+    //     window.mapInitialized = true;
+    // }
 }
 
 // function initMap() {
