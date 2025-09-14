@@ -8,16 +8,17 @@
     --primary-blue: #0057ff;
     --dark-blue: #0057ff;
     --light-blue: #01fff9;
-    --dark-gray: #212529;
-    --light-gray: #f8f9fa;
-    --white: #ffffff;
+    --dark-gray: #f8f9fa; /* Swapped with light-gray */
+    --light-gray: #212529; /* Swapped with dark-gray */
+    --white: #000000; /* Black background */
+    --text-color: #ffffff; /* White text */
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: var(--dark-gray);
-    background: linear-gradient(135deg, #0057ff 0%, #01fff9 100%);
+    color: var(--text-color);
+    background: var(--white);
     min-height: 100vh;
 }
 
@@ -29,9 +30,9 @@ body {
 
 /* Navigation */
 nav {
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.8); /* Darker background for nav */
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
     position: fixed;
     width: 100%;
     top: 0;
@@ -64,7 +65,7 @@ nav {
 }
 
 .nav-menu a {
-    color: var(--dark-gray);
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -101,10 +102,10 @@ nav {
 }
 
 .content-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(33, 37, 41, 0.95); /* Darker background for content cards */
     border-radius: 20px;
     padding: 3rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     margin: 2rem 0;
 }
@@ -159,7 +160,7 @@ nav {
 .content-text {
     margin-top: 2rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--text-color);
 }
 
 /* Mission Section */
@@ -202,7 +203,7 @@ nav {
 .team-member {
     text-align: center;
     text-decoration: none;
-    color: inherit;
+    color: var(--text-color);
     transition: transform 0.3s ease;
     padding: 1.5rem;
     border-radius: 15px;
@@ -229,12 +230,12 @@ nav {
 }
 
 .team-member h3 {
-    color: var(--dark-gray);
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
 .team-member p {
-    color: #666;
+    color: #bbb;
     font-size: 0.9rem;
 }
 
@@ -250,6 +251,7 @@ nav {
     background: var(--light-gray);
     padding: 2rem;
     border-radius: 15px;
+    color: var(--text-color);
 }
 
 .contact-details h3 {
@@ -298,5 +300,39 @@ nav {
 
     .team-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .nav-container {
+        padding: 1rem 1rem;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .content-card {
+        padding: 1.5rem;
+    }
+
+    .mission-statement h2 {
+        font-size: 2rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details h3 {
+        font-size: 1.2rem;
     }
 }

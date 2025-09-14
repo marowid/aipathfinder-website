@@ -40,15 +40,20 @@ function initMap() {
 
 // Handle initial page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we should show a specific section
+    // Check if we should show a specific section from session storage
     const sectionToShow = sessionStorage.getItem('showSection');
-    if (sectionToShow) {
+
+    // Also check for hash fragment in URL
+    const hash = window.location.hash.substring(1); // Remove the '#'
+    const targetSectionId = sectionToShow || hash || 'home';
+
+    if (targetSectionId && targetSectionId !== 'home') {
         // Hide all sections
         const sections = document.querySelectorAll('.section');
         sections.forEach(section => section.classList.remove('active'));
 
         // Show the requested section
-        const targetSection = document.getElementById(sectionToShow);
+        const targetSection = document.getElementById(targetSectionId);
         if (targetSection) {
             targetSection.classList.add('active');
         }
@@ -56,12 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update active nav link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => link.classList.remove('active'));
-        const targetNavLink = document.querySelector(`a[href="#${sectionToShow}"]`);
+        const targetNavLink = document.querySelector(`a[href="#${targetSectionId}"], a[href="index.html#${targetSectionId}"]`);
         if (targetNavLink) {
             targetNavLink.classList.add('active');
         }
 
-        // Clear the session storage
+        // Initialize map if contact section is shown
+        if (targetSectionId === 'contact' && !window.mapInitialized) {
+            initMap();
+            window.mapInitialized = true;
+        }
+    }
+
+    // Clear the session storage
+    if (sectionToShow) {
         sessionStorage.removeItem('showSection');
     }
 
