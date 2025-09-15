@@ -9,6 +9,17 @@
   const form = document.getElementById("contact-form");
   const feedback = document.getElementById("form-feedback");
   const submitBtn = form.querySelector('button[type="submit"]');
+  
+  const phone = document.getElementById("c-phone");
+  if (phone) {
+    phone.addEventListener("input", () => {
+      phone.value = phone.value
+        .replace(/[^0-9()+\- ]/g, '') 
+        .replace(/(?!^)\+/g, '');     
+    });
+  }
+
+
 
   const setState = (msg, ok = true) => {
     feedback.style.display = "block";

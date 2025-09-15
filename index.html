@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="js/lottie-player.js"></script>
+
+<!-- favicon -->
+<link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="AI Pathfinder" />
+<link rel="manifest" href="assets/favicon/site.webmanifest" />
+
 </head>
 
 <body>
@@ -466,32 +475,38 @@
         <p class="white">Fill out the form below and we’ll get back to you as soon as possible.</p>
        </div>
    <label for="c-name" class="form-label grey">Full Name <span class="green">*</span></label>
-<input id="c-name" name="name" type="text" class="form-control" required aria-describedby="c-name-hint">
+<input id="c-name" name="name" type="text" class="form-control" required aria-describedby="c-name-hint" autocomplete="name">
     <span id="c-name-hint" class="input-hint">Please enter your full name.</span>
 
 <div class="row">
   <div>
     <label for="c-email" class="form-label grey">Email <span class="green">*</span></label>
-    <input id="c-email" name="email" type="email" class="form-control" required aria-describedby="c-email-hint">
+    <input id="c-email" name="email" type="email" class="form-control" required aria-describedby="c-email-hint" autocomplete="email">
     <span id="c-email-hint" class="input-hint">Please enter a valid email.</span>
 
 </div>
 <div>
     <label for="c-phone" class="form-label grey">Phone</label>
-    <input id="c-phone" name="phone" type="tel" class="form-control">
+    <input id="c-phone" 
+    name="phone"
+     type="tel" 
+     inputmode="tel" 
+    pattern="^[0-9+\-() ]+$" 
+    maxlength="20"
+     class="form-control" autocomplete="tel">
     </div>
 </div>
     <label for="c-msg" class="form-label grey">Message <span class="green">*</span></label>
-    <textarea id="c-msg" name="message" rows="4" class="form-control" required aria-describedby="c-msg-hint"></textarea>
+    <textarea id="c-msg" name="message" rows="4" class="form-control" required aria-describedby="c-msg-hint" minlength="10"></textarea>
     <span id="c-msg-hint" class="input-hint">Please write a brief message.</span>
 
     <div class="form-actions">
       <button class="contact-btn" type="submit">Send</button>
     </div>
     <input type="text" name="company" id="c-company" autocomplete="off" tabindex="-1"
-       style="position:absolute;left:-5000px;">
+       style="position:absolute;left:-5000px;" aria-hidden="true">
 
-    <p id="form-feedback" class="white" style="opacity:.8; display:none;"></p>
+    <p id="form-feedback" role="status" aria-live="polite" class="white" style="opacity:.8; display:none;"></p>
   </form>
 </div>
 
