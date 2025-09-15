@@ -18,14 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!pre || !page) return;
 
 
-  const hidePreloader = () => {
-    pre.style.opacity = "0";
-    pre.style.pointerEvents = "none";
-    setTimeout(() => {
-      pre.style.display = "none";
-      saveVisit();
-    }, FADE_MS);
-  };
+const hidePreloader = () => {
+  pre.style.opacity = "0";
+  pre.style.pointerEvents = "none";
+  setTimeout(() => {
+    pre.style.display = "none";
+    saveVisit();
+    document.dispatchEvent(new CustomEvent('preloader:hidden'));
+  }, FADE_MS);
+};
+
 
   if (visitedRecently()) {
     hidePreloader();

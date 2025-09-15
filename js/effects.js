@@ -1,7 +1,5 @@
-// intro.js
-// ============================================================
-// Entrance reveal + per-section refresh (SPA friendly)
-// ============================================================
+// effects.js
+
 (function () {
   // ---------- Utils ----------
   const qs   = (sel, root = document) => root.querySelector(sel);
@@ -73,16 +71,18 @@
   }
 
   // ---------- Preloader handling ----------
-  function handlePreloaderThen(fn) {
-    const preloader = qs('#preloader');
-    if (!preloader) return fn();
+function handlePreloaderThen(fn) {
+  const preloader = qs('#preloader');
 
-    const finish = () => {
-      preloader.style.opacity = '0';
-      setTimeout(() => { preloader.style.display = 'none'; fn(); }, 150);
-    };
-    setTimeout(finish, 900);
-  }
+  if (!preloader) return fn();
+
+  const isGone = preloader.style.display === 'none' || preloader.hidden ||
+                 getComputedStyle(preloader).display === 'none';
+  if (isGone) return fn();
+
+  document.addEventListener('preloader:hidden', fn, { once: true });
+}
+
 
   // ---------- Hooks for SPA / section changes ----------
   function setupSectionChangeHooks() {
