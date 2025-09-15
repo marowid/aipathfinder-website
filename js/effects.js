@@ -41,7 +41,7 @@
     }
 
     // MISSION, ABOUT, TEAM, FOOTER
-    qsa('.box, .key-announcement, .content-text p, .about-text p, .team-member, footer .footer-grid > *')
+    qsa('.box-container .key-announcement, .content-text p, .about-text p, .team-member, footer .footer-grid > *')
       .forEach((el) => el.classList.add('reveal', 'reveal-up'));
 
     // Extra stagger per groups
