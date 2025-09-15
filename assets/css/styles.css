@@ -988,6 +988,10 @@ footer:hover .box-border {
   .logo_animation {
   width: 80%;
 }
+.hero{
+  padding-left: 6% ;
+  padding-right: 6% ;
+}
 }
 
 @media(max-width: 990px){
@@ -995,6 +999,7 @@ footer:hover .box-border {
     font-size: 48px;
     line-height: 52px;
   }
+  
   .caption {
     font-size: 1rem;
     padding: 0.25rem 1.2rem;
@@ -1108,6 +1113,7 @@ footer:hover .box-border {
   width: 100%;
   max-height: 270px;
 }
+
 }
 @media (max-width: 480px) {
   h1 {
@@ -1119,6 +1125,9 @@ footer:hover .box-border {
   }
    p {
     font-size: 0.9rem;  
+  }
+  .site-footer p {
+        font-size: 0.8rem; 
   }
    .team-grid {
     grid-template-columns: 1fr;
