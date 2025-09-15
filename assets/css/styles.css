@@ -20,7 +20,7 @@ html{
   --background-dark-blue: #050A12;
   --background-dark-blue-70: rgba(5, 10, 18, 0.7);
     --background-dark-blue-20: rgba(5, 10, 18, 0.2);
-
+    --blue-transparent-dark: rgba(53, 74, 102, 0.2);
   --unsaturated-blue: #3281FF; 
   --blue-transparent: rgba(128, 180, 250, 0.2); 
     --blue-transparent-40: rgba(128, 180, 250, 0.4); 
@@ -118,6 +118,7 @@ text-align: left;
   }
 }
 .caption {
+  
   display: inline-block;
   padding: 0.3rem 1.5rem;
   font-size: 1.2rem;
@@ -125,6 +126,8 @@ text-align: left;
   border-radius: 100px;
   background: var(--blue-transparent);
   margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .center {
   display: table;
@@ -208,8 +211,9 @@ margin-bottom: 100px;
     }
 /* Navigation */
 nav {
-    background: var(--blue-transparent);
+    background: var(--blue-transparent-dark);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 80%;
@@ -272,6 +276,9 @@ nav {
     transition: all 0.3s ease;
     position: relative;
     border: none;
+    min-width: 189px;
+    display: block;
+    text-align: center;
 }
 .contact-btn:hover{
     background-color: var(--blue-transparent-40);
@@ -349,6 +356,7 @@ nav {
     padding: 3rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     margin: 2rem 0;
     animation: slideInFromBottom 0.6s 
 ease-out;
@@ -650,6 +658,7 @@ transition: all 0.3s ease-in-out;
   padding: 5px 10px;
   border-radius: 100px;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--unsaturated-blue);
 
 }
@@ -727,6 +736,7 @@ color: white;
   border-radius: 16px;
   padding: 1.25rem;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .contact-form h3{ margin-top:0; margin-bottom:.75rem; }
 
