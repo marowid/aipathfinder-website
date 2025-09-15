@@ -1037,7 +1037,7 @@ footer:hover .box-border {
 }
 .footer-background{
 
-  height: 60vh;
+  height: 70vh;
 
 }
   h1 {
@@ -1142,7 +1142,7 @@ footer:hover .box-border {
 @media (max-width: 375px) {
    .footer-background{
 
-  height: 65vh;
+  height: 75vh;
 
 } 
 }
