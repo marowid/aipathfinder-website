@@ -39,6 +39,10 @@ html{
   --trail-radius: 400px;
   --mobile-size: 400px;
   --mobile-radius: 200px;
+    --enter-y: 24px;
+  --enter-scale: .98;
+  --enter-duration: .8s;
+  --enter-ease: cubic-bezier(.22,.61,.36,1);
 
 }
 body {
@@ -569,7 +573,7 @@ ease-out;
 }
 
 .team-member:hover{
-  transform: translateY(-10px);
+  transform: translateY(-10px) !important;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
@@ -627,7 +631,7 @@ transition: all 0.3s ease-in-out;
    background-color: var(--blue-transparent-40);
 }
 .linkedin:hover{
-  transform: scale(1.1);
+  transform: scale(1.1) !;
 }
 .linkedin img{
   width: 60%;
@@ -1113,3 +1117,63 @@ footer:hover .box-border {
 } 
 }
 
+
+
+
+
+/* effects */
+
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--enter-y), 0) scale(var(--enter-scale));
+  filter: blur(6px);
+  transition:
+    opacity var(--enter-duration) var(--enter-ease),
+    transform var(--enter-duration) var(--enter-ease),
+    filter .6s var(--enter-ease);
+  will-change: opacity, transform, filter;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+
+.reveal[data-stagger] { transition-delay: calc(var(--i, 0) * 90ms); }
+
+
+.reveal-up { 
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+}
+.reveal-up.in {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+}
+
+
+.reveal-scale { transform: scale(.96); }
+.reveal-scale.in { transform: scale(1); }
+
+
+.hero {
+  position: relative;
+  overflow: clip;
+}
+
+
+/*  Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-up,
+  .reveal-scale,
+  .text-gradient,
+  .site-footer::before,
+  .box-border {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
