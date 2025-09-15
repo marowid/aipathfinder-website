@@ -6,7 +6,8 @@
     navLinks: '.nav-link',
   };
 
-  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+  const MQ = '(max-width: 767px)';
+  const isMobile = () => window.matchMedia(MQ).matches;
 
   function getEls() {
     return {
@@ -19,16 +20,34 @@
     el.setAttribute('aria-expanded', String(expanded));
   }
 
+  
   function openPanel(panel, toggle) {
     if (!panel || !toggle) return;
     setExpanded(toggle, true);
+
+   
     panel.hidden = false;
+
+    
+    panel.offsetHeight;
+
+    panel.classList.add('is-open');
+    document.body.classList.add('menu-open');
   }
 
   function closePanel(panel, toggle) {
     if (!panel || !toggle) return;
     setExpanded(toggle, false);
-    panel.hidden = true;
+
+    panel.classList.remove('is-open');
+
+    const onDone = () => {
+      panel.hidden = true; 
+      document.body.classList.remove('menu-open');
+    };
+
+    panel.addEventListener('transitionend', onDone, { once: true });
+    setTimeout(onDone, 450); 
   }
 
   function togglePanel() {
@@ -46,7 +65,6 @@
   }
 
   function decorateShowSectionToCloseMenu() {
-    // Si existe showSection, lo envolvemos para cerrar menú en mobile tras cambiar de sección
     if (typeof window.showSection === 'function' && !window.showSection.__wrappedForNav) {
       const original = window.showSection;
       window.showSection = function (...args) {
@@ -61,16 +79,12 @@
   function handleInitialState() {
     const { toggle, panel } = getEls();
     if (toggle && panel) {
-      // Siempre inicia colapsado en mobile
-      if (isMobile()) {
-        closePanel(panel, toggle);
-      } else {
-        // En desktop, el contenedor suele comportarse con display: contents; igualmente lo dejamos cerrado por consistencia
-        closePanel(panel, toggle);
-      }
+      setExpanded(toggle, false);
+      panel.hidden = true;
+      panel.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
     }
 
-    // Si hay hash al cargar, navega a esa sección usando showSection (si existe)
     if (location.hash) {
       const id = location.hash.slice(1);
       const link = document.querySelector(`.nav-link[href="#${id}"]`);
@@ -83,19 +97,19 @@
   function initEventListeners() {
     const { toggle, panel } = getEls();
 
-    // Toggle hamburguesa
     if (toggle) {
       toggle.addEventListener('click', togglePanel);
     }
 
-    // Cerrar con ESC en mobile
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isMobile()) {
         closeMobileNavIfOpen();
+        const { toggle } = getEls();
+        if (toggle) toggle.focus();
       }
     });
 
-    // Cerrar al hacer click en cualquier link dentro del panel (mobile)
+    
     if (panel) {
       panel.addEventListener('click', (e) => {
         const a = e.target.closest('a[href^="#"]');
@@ -104,22 +118,19 @@
       });
     }
 
-    // Interceptar anchors SPA (si tu otro script ya previene default, no pasa nada)
+  
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
-        // Dejamos que tu otro script haga preventDefault si quiere
         const id = this.getAttribute('href').slice(1);
         if (typeof window.showSection === 'function') {
-          // Evita salto brusco y usa tu navegación SPA
           e.preventDefault();
           window.showSection(id, this);
-          // Opcional: mantener URL actualizada
           history.pushState(null, '', `#${id}`);
         }
       });
     });
 
-    // Soporta back/forward del navegador
+
     window.addEventListener('popstate', () => {
       const id = (location.hash || '#home').slice(1);
       const link = document.querySelector(`.nav-link[href="#${id}"]`);
@@ -128,13 +139,23 @@
       }
     });
 
-    // Reacciona a cambios de viewport: si vuelves a mobile, asegúrate de tener el panel colapsado
-    window.matchMedia('(max-width: 767px)').addEventListener('change', () => {
+
+    window.matchMedia(MQ).addEventListener('change', () => {
       closeMobileNavIfOpen();
+    });
+
+
+    document.addEventListener('click', (e) => {
+      const { toggle, panel } = getEls();
+      if (!toggle || !panel) return;
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      if (!open) return;
+      if (!panel.contains(e.target) && !toggle.contains(e.target) && isMobile()) {
+        closePanel(panel, toggle);
+      }
     });
   }
 
-  // Boot
   document.addEventListener('DOMContentLoaded', () => {
     decorateShowSectionToCloseMenu();
     handleInitialState();

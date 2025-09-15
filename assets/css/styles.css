@@ -336,6 +336,27 @@ nav {
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3){
   transform: translateY(calc(-1 * (var(--bar-h) + var(--bar-gap)))) rotate(-45deg);
 }
+@media (max-width: 768px){
+  .nav-collapsible{
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height .6s ease, opacity .45s ease, transform .45s ease;
+  }
+  .nav-collapsible.is-open{
+   
+    max-height: 600px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  body.menu-open{
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
 /* Sections */
 .section {
     display: none;
