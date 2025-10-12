@@ -791,11 +791,11 @@ transition: all 0.3s ease-in-out;
 }
 .map {
   position: relative;
-  width: 35%;
-  height: 550px; 
+  flex: 1;
+  height: 550px;
   border-radius: 16px;
   overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -811,10 +811,10 @@ transition: all 0.3s ease-in-out;
   gap: 20px;
 }
 .contact-details {
-background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2rem;
-    border-radius: 15px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 2rem;
+  border-radius: 15px;
 }
 .contact-label{
   color: var(--blue-transparent-70);
