@@ -84,7 +84,7 @@ window.addEventListener('hashchange', handleRoute);
       const blob = document.createElement("div");
       blob.className = "circle_mobile";
       blob.style.display = "block";
-      blob.style.backgroundImage = COLORS[0];
+      blob.style.backgroundImage = "radial-gradient(circle at 70% 40%, rgba(43,86,173,0.2) 0%, rgba(183,207,255,0.1) 50%, transparent 70%)";
       blob.style.mixBlendMode = "screen";
       ROOT.appendChild(blob);
       circles = [];

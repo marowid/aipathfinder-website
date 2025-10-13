@@ -1,5 +1,4 @@
 // effects.js
-
 (function () {
   // ---------- Utils ----------
   const qs   = (sel, root = document) => root.querySelector(sel);
@@ -15,21 +14,31 @@
     return r.top < vh * 0.9 && r.bottom > 0;
   };
 
+  const prefersReduced = () =>
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ---------- Observer (singleton) ----------
   let ioReveal = null;
   function ensureObserver() {
     if (ioReveal) return ioReveal;
+
     ioReveal = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('in');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+
       });
-    }, { threshold: 0.18, rootMargin: '0px 0px -5% 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
     return ioReveal;
   }
 
   // ---------- Markup bootstrap (adds .reveal to targets) ----------
   function bootstrapRevealClasses() {
-    // HERO: mark children for stagger
+    if (prefersReduced()) return; 
+
+
     const heroContent = qs('.hero .container > div');
     if (heroContent) {
       const heroKids = qsa(' .caption, h1, p, .contact-btn, .hero-cta, .hero-media', heroContent);
@@ -40,18 +49,19 @@
       applyStaggerIndex(heroKids);
     }
 
-    // MISSION, ABOUT, TEAM, FOOTER
     qsa('.box-container .key-announcement, .content-text p, .about-text p, .team-member, footer .footer-grid > *')
       .forEach((el) => el.classList.add('reveal', 'reveal-up'));
 
-    // Extra stagger per groups
     applyStaggerIndex(qsa('.box-container .box'));
     applyStaggerIndex(qsa('.team-grid .team-member'));
     applyStaggerIndex(qsa('footer .footer-grid > *'));
+
+    qsa('.reveal').forEach((el) => el.style.willChange = 'transform, opacity');
   }
 
   // ---------- Observe / Refresh ----------
   function observeReveals(scope = document) {
+    if (prefersReduced()) return;
     const io = ensureObserver();
     qsa('.reveal', scope).forEach((el) => {
       io.observe(el);
@@ -60,31 +70,38 @@
   }
 
   function refreshReveals(scope = document) {
+    if (prefersReduced()) return;
     const io = ensureObserver();
     const els = qsa('.reveal', scope);
+
     els.forEach((el) => {
       io.unobserve(el);
-      el.classList.remove('in');   // remove to re-animate on each visit
+    
+      if (!isInViewport(el)) el.classList.remove('in');
       io.observe(el);
     });
-    raf(() => { els.forEach((el) => { if (isInViewport(el)) el.classList.add('in'); }); });
+
+    raf(() => {
+      els.forEach((el) => {
+        if (isInViewport(el)) el.classList.add('in');
+      });
+    });
   }
 
   // ---------- Preloader handling ----------
-function handlePreloaderThen(fn) {
-  const preloader = qs('#preloader');
+  function handlePreloaderThen(fn) {
+    const preloader = qs('#preloader');
 
-  if (!preloader) return fn();
+    if (!preloader) return fn();
 
-  const isGone = preloader.style.display === 'none' || preloader.hidden ||
-                 getComputedStyle(preloader).display === 'none';
-  if (isGone) return fn();
+    const isGone = preloader.style.display === 'none' || preloader.hidden ||
+                   getComputedStyle(preloader).display === 'none';
+    if (isGone) return fn();
 
-  document.addEventListener('preloader:hidden', fn, { once: true });
-}
+    document.addEventListener('preloader:hidden', fn, { once: true });
+  }
 
-
-  // ---------- Hooks for SPA / section changes ----------
+  // ---------- Hooks para SPA / cambios de sección ----------
   function setupSectionChangeHooks() {
     // A) Hash-based navigation
     window.addEventListener('hashchange', () => {
@@ -94,7 +111,7 @@ function handlePreloaderThen(fn) {
       });
     });
 
-    // B) Custom event from navbar.js
+    // B) Custom event desde navbar.js
     document.addEventListener('section:changed', () => {
       raf(() => {
         const active = qs('.section.active');
@@ -102,7 +119,7 @@ function handlePreloaderThen(fn) {
       });
     });
 
-    // C) Nav link clicks
+    // C) Clicks en nav links
     qsa('.nav-link').forEach((a) => {
       a.addEventListener('click', () => {
         setTimeout(() => {
@@ -111,25 +128,15 @@ function handlePreloaderThen(fn) {
         }, 60);
       });
     });
-
-    // D) Debounced refresh after programmatic scrollTop
-    let t;
-    window.addEventListener('scroll', () => {
-      clearTimeout(t);
-      t = setTimeout(() => {
-        const active = qs('.section.active');
-        if (active) refreshReveals(active);
-      }, 120);
-    }, { passive: true });
   }
 
-  // ---------- Init ----------
+
   function init() {
     bootstrapRevealClasses();
 
     handlePreloaderThen(() => {
-      observeReveals(document);   // start observing
-      setupSectionChangeHooks();  // refresh on page/section change
+      observeReveals(document);   
+      setupSectionChangeHooks();  
     });
   }
 

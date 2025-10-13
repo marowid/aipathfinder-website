@@ -21,11 +21,11 @@ html{
   --background-dark-blue: #050a12;
   --background-dark-blue-70: rgba(5, 10, 18, 0.7);
     --background-dark-blue-20: rgba(5, 10, 18, 0.2);
-    --blue-transparent-dark: rgba(53, 74, 102, 0.2);
+    --blue-transparent-dark: #2b56ad20;
   --unsaturated-blue: #2b56ad; 
-  --blue-transparent: rgba(128, 180, 250, 0.2); 
-    --blue-transparent-40: rgba(128, 180, 250, 0.4); 
-        --blue-transparent-70: rgba(128, 180, 250, 0.7); 
+  --blue-transparent: rgba(183, 207, 255, 0.2); 
+    --blue-transparent-40: rgba(183, 207, 255, 0.4); 
+        --blue-transparent-70: rgba(183, 207, 255, 0.7); 
   --gradient-heading-primary: linear-gradient(
     180deg,
     var(--white),
@@ -239,7 +239,7 @@ nav {
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: fixed;
-    width: 80%;
+    width: 89%;
     max-width: 1300px;
     top: 0;
     left: 0;
@@ -1079,11 +1079,11 @@ footer{
 
 }
 .site-footer{
-  background: rgba(53, 74, 102, 0.2);
+  background: var(--blue-transparent-dark);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 2px 20px rgba(0,0,0,.1);
-  width: 80%;
+  width: 90%;
   max-width: 1300px;
   margin: 60px auto 0px;   
   border-radius: 26px;
