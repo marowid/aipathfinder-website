@@ -53,7 +53,12 @@ window.addEventListener('hashchange', handleRoute);
   ROOT.id = "mouseRoot";
   document.body.appendChild(ROOT);
 
-  const COLORS = ["#3281FF", "#3281FF", "#3281FF"];
+  const COLORS = [
+    "radial-gradient(circle at 30% 30%, rgba(183,207,255,0.1) 0%, rgba(43,86,173,1) 40%, transparent 70%)",
+    "radial-gradient(circle at 70% 40%, rgba(43,86,173,1) 0%, rgba(183,207,255,0.1) 50%, transparent 70%)",
+    "radial-gradient(circle at 40% 70%, rgba(183,207,255,0.1) 0%, rgba(43,86,173,1) 42%, transparent 72%)"
+  ];
+
   const COUNT = 20;
   const BREAKPOINT = 990;
 
@@ -70,7 +75,8 @@ window.addEventListener('hashchange', handleRoute);
       circles = Array.from({ length: COUNT }, (_, i) => {
         const el = document.createElement("div");
         el.className = "circle";
-        el.style.backgroundColor = COLORS[i % COLORS.length];
+        el.style.backgroundImage = COLORS[i % COLORS.length];
+        el.style.opacity = "0.05";
         ROOT.appendChild(el);
         return { el, x: 0, y: 0 };
       });
@@ -78,6 +84,8 @@ window.addEventListener('hashchange', handleRoute);
       const blob = document.createElement("div");
       blob.className = "circle_mobile";
       blob.style.display = "block";
+      blob.style.backgroundImage = COLORS[0];
+      blob.style.mixBlendMode = "screen";
       ROOT.appendChild(blob);
       circles = [];
     }
@@ -91,13 +99,14 @@ window.addEventListener('hashchange', handleRoute);
       circles.forEach((c, index) => {
         c.x = x;
         c.y = y;
-        const scale = (circles.length - index) / circles.length;
-        c.el.style.transform = `translate(${c.x -  200}px, ${c.y -  200}px) scale(${scale})`;
 
-        
+        const scale = (circles.length - index) / circles.length;
+        const offset = 200;
+        c.el.style.transform = `translate(${c.x - offset}px, ${c.y - offset}px) scale(${scale})`;
+
         const next = circles[index + 1] || circles[0];
-        x += (next.x - x) * 0.5;
-        y += (next.y - y) * 0.5;
+        x += (next.x - x) * 0.4;
+        y += (next.y - y) * 0.4;
       });
     }
     rafId = requestAnimationFrame(animate);
