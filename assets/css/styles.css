@@ -1106,7 +1106,7 @@ footer{
   width: 100svw;
   left: 50%;
   transform: translateX(-50%);
-  height: 40vh;
+  height: 35vh;
   bottom: -65px;
 }
 body:not([data-page="home"]) .footer-background {
@@ -1287,8 +1287,14 @@ footer:hover .box-border {
 }
 .footer-background{
 
-  height: 70vh;
+  height: 50vh;
 
+}
+.hero::after {
+
+  background:
+    linear-gradient(to bottom, rgba(5,10,18,0.5) 0%, rgba(5,10,18,1) 100%);
+  mix-blend-mode: normal;
 }
   h1 {
     font-size: 36px;
@@ -1455,5 +1461,6 @@ footer:hover .box-border {
     animation: none !important;
     transition: none !important;
     transform: none !important;
-  }
+  
+}
 }
