@@ -724,7 +724,7 @@ ease-out;
 }
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -771,16 +771,18 @@ ease-out;
 .info{
   position: relative;
   width: 100%;
+      min-height: 100px;
   display: flex;
   flex-direction: row;
     flex-wrap: nowrap;
         align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 background-color: var(--background-dark-blue);
 
   left: 0px;
   bottom: 0px;
-
+    padding-left: 10px;
+    padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
    border-radius: 0px 0px 15px 15px;
@@ -788,7 +790,7 @@ background-color: var(--background-dark-blue);
 .linkedin{
   background-color: var(--blue-transparent);
   aspect-ratio: 1/1;
-  height: 40px;
+  height: 35px;
   border-radius: 100px;
   padding: 5px;
     display: flex;
@@ -1233,7 +1235,13 @@ footer:hover .box-border {
   .nav-toggle{ display:none; }
   .nav-collapsible[hidden]{ display:contents !important; }
 }
+@media (max-width: 1170px){
+.team-grid {
+  
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
 
+}
+}
 @media (max-width: 1024px){
   .logo_animation {
   width: 80%;
@@ -1241,6 +1249,11 @@ footer:hover .box-border {
 .hero{
   padding-left: 6% ;
   padding-right: 6% ;
+}
+.team-grid {
+  
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+
 }
 }
 
