@@ -1177,7 +1177,7 @@ display: flex;
 .box-gradient{
       opacity: 0;
     filter: blur(1rem);
-    background-color: #14285080;
+    background-color: #1428509a;
     border-radius: 50%;
     width: 60%;
     height: 1rem;
@@ -1190,7 +1190,7 @@ display: flex;
 .box-gradient-2{
 opacity: 0;
     filter: blur(1rem);
-    background-color: #14285080;
+    background-color: #1428509a;
     border-radius: 50%;
     width: 70%;
     height: 1rem;
