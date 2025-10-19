@@ -735,15 +735,24 @@ ease-out;
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: transform .3s ease;
   border-radius: 15px;
   overflow: hidden;              
   background: transparent;
+  transition: transform .3s ease, opacity .3s ease, box-shadow .3s ease, filter .3s ease;
+  will-change: transform, opacity, filter;
 }
 
-.team-member:hover{
-  transform: translateY(-10px) !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+.team-member:hover,
+.team-member:focus-within{
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(0,0,0,.15);
+  z-index: 2;
+}
+.team-member:hover .team-photo img,
+.team-member:focus-within .team-photo img{
+  filter: grayscale(100%) brightness(1.04) contrast(1.08);
+  transform: scale(1.03);
+  opacity: 1;
 }
 
 
@@ -762,8 +771,33 @@ ease-out;
   display: block;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%);
+  filter: grayscale(100%) brightness(.98) contrast(1.02);
+  transition: transform .35s ease, filter .35s ease, opacity .3s ease;
+  will-change: transform, filter, opacity;
 }
+
+@supports(selector(:has(*))){
+  .team-grid:has(.team-member:hover, .team-member:focus-within) .team-member:not(:hover):not(:focus-within){
+    opacity: .55;
+    transform: scale(.985);
+    filter: saturate(.9); 
+  }
+}
+
+.team-member:focus-visible,
+.team-member a:focus-visible{
+  outline: 2px solid rgba(255,255,255,.35);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+.linkedin:hover{ transform: scale(1.1); }
+
+@media (prefers-reduced-motion: reduce){
+  .team-member,
+  .team-photo img{ transition: none !important; transform: none !important; }
+}
+
 
 .vertical img{
   width: 100% !important;
