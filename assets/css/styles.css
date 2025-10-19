@@ -1258,6 +1258,9 @@ footer:hover .box-border {
 }
 
 @media(max-width: 990px){
+  .logo-container_mobile{
+    line-height: 1;
+  }
   h1 {
     font-size: 48px;
     line-height: 52px;
