@@ -68,6 +68,9 @@ body::before {
 strong{
   font-weight: 900;
 }
+.strong{
+  font-weight: 900;
+}
 #page{
   position: relative;
   z-index: 2;
