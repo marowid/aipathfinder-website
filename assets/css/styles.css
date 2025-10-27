@@ -784,12 +784,14 @@ ease-out;
   transition: transform .5s ease, filter .5s ease, opacity .5s ease;
   will-change: transform, filter, opacity;
 }
-
-@supports(selector(:has(*))){
-  .team-grid:has(.team-member:hover, .team-member:focus-within) .team-member:not(:hover):not(:focus-within){
-    opacity: .55;
-    transform: scale(.985);
-    filter: saturate(.9); 
+@media (min-width: 769px) {
+  @supports(selector(:has(*))) {
+    .team-grid:has(.team-member:hover, .team-member:focus-within)
+    .team-member:not(:hover):not(:focus-within) {
+      opacity: 0.65;
+      transform: scale(0.985);
+      filter: saturate(0.9);
+    }
   }
 }
 
