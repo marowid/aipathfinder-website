@@ -556,16 +556,16 @@ ease-out;
 
 
 
-.orb--1  { --size: 46vmin; --path: path-loop-a; --dur: 42s; --drift: 26s; --pulse: 13s; --x0: -18vw; --y0: -10vh; --scale: 1.04; --delay-path: 0s;   --delay-drift: .10s; --delay-pulse: .05s; }
-.orb--2  { --size: 36vmin; --path: path-loop-b; --dur: 38s; --drift: 24s; --pulse: 12s; --x0:  10vw; --y0:  12vh; --scale: 0.98; --delay-path: .20s; --delay-drift: .40s; --delay-pulse: .10s; }
-.orb--3  { --size: 32vmin; --path: path-loop-c; --dur: 44s; --drift: 27s; --pulse: 14s; --x0:  -6vw; --y0:  22vh; --scale: 1.00; --delay-path: .40s; --delay-drift: .15s; --delay-pulse: .25s; }
-.orb--4  { --size: 54vmin; --path: path-loop-d; --dur: 40s; --drift: 30s; --pulse: 11s; --x0:  14vw; --y0: -20vh; --scale: 1.10; --delay-path: .60s; --delay-drift: .80s; --delay-pulse: .20s; }
-.orb--5  { --size: 24vmin; --path: path-loop-b; --dur: 36s; --drift: 22s; --pulse: 10s; --x0: -10vw; --y0:  28vh; --scale: 0.94; --delay-path: .80s; --delay-drift: .30s; --delay-pulse: .15s; }
-.orb--6  { --size: 28vmin; --path: path-loop-a; --dur: 39s; --drift: 23s; --pulse: 12s; --x0:  20vw; --y0:   8vh; --scale: 1.00; --delay-path: 1.00s; --delay-drift: .55s; --delay-pulse: .35s; }
-.orb--7  { --size: 26vmin; --path: path-loop-c; --dur: 41s; --drift: 21s; --pulse:  9s; --x0: -16vw; --y0:  -6vh; --scale: 1.03; --delay-path: 1.20s; --delay-drift: .10s; --delay-pulse: .25s; }
-.orb--8  { --size: 30vmin; --path: path-loop-d; --dur: 43s; --drift: 25s; --pulse: 13s; --x0:   6vw; --y0: -22vh; --scale: 0.98; --delay-path: 1.40s; --delay-drift: .65s; --delay-pulse: .45s; }
-.orb--9  { --size: 22vmin; --path: path-loop-a; --dur: 37s; --drift: 19s; --pulse: 10s; --x0: -14vw; --y0:   8vh; --scale: 1.06; --delay-path: 1.60s; --delay-drift: .25s; --delay-pulse: .30s; }
-.orb--10 { --size: 34vmin; --path: path-loop-b; --dur: 46s; --drift: 30s; --pulse: 12s; --x0:   8vw; --y0:  22vh; --scale: 1.00; --delay-path: 1.80s; --delay-drift: .90s; --delay-pulse: .50s; }
+.orb--1  { --size: 46vmin; --path: path-loop-a; --dur: 42s; --drift: 26s; --pulse: 13s; --x0: -18vw; --y0: -10vh; --scale: 1.04; --delay-path: 0s;   --delay-drift: 0s; --delay-pulse: 0s; }
+.orb--2  { --size: 36vmin; --path: path-loop-b; --dur: 38s; --drift: 24s; --pulse: 12s; --x0:  10vw; --y0:  12vh; --scale: 0.98; --delay-path: .10s; --delay-drift: .20s; --delay-pulse: .20s; }
+.orb--3  { --size: 32vmin; --path: path-loop-c; --dur: 44s; --drift: 27s; --pulse: 14s; --x0:  -6vw; --y0:  22vh; --scale: 1.00; --delay-path: .20s; --delay-drift: .15s; --delay-pulse: .15s; }
+.orb--4  { --size: 54vmin; --path: path-loop-d; --dur: 40s; --drift: 30s; --pulse: 11s; --x0:  14vw; --y0: -20vh; --scale: 1.10; --delay-path: .30s; --delay-drift: .40s; --delay-pulse: .10s; }
+.orb--5  { --size: 24vmin; --path: path-loop-b; --dur: 36s; --drift: 22s; --pulse: 10s; --x0: -10vw; --y0:  28vh; --scale: 0.94; --delay-path: .50s; --delay-drift: .20s; --delay-pulse: .15s; }
+.orb--6  { --size: 28vmin; --path: path-loop-a; --dur: 39s; --drift: 23s; --pulse: 12s; --x0:  20vw; --y0:   8vh; --scale: 1.00; --delay-path: .60s; --delay-drift: .55s; --delay-pulse: .25s; }
+.orb--7  { --size: 26vmin; --path: path-loop-c; --dur: 41s; --drift: 21s; --pulse:  9s; --x0: -16vw; --y0:  -6vh; --scale: 1.03; --delay-path: .70s; --delay-drift: .10s; --delay-pulse: .15s; }
+.orb--8  { --size: 30vmin; --path: path-loop-d; --dur: 43s; --drift: 25s; --pulse: 13s; --x0:   6vw; --y0: -22vh; --scale: 0.98; --delay-path: .80s; --delay-drift: .65s; --delay-pulse: .25s; }
+.orb--9  { --size: 22vmin; --path: path-loop-a; --dur: 37s; --drift: 19s; --pulse: 10s; --x0: -14vw; --y0:   8vh; --scale: 1.06; --delay-path: 1s; --delay-drift: .25s; --delay-pulse: .30s; }
+.orb--10 { --size: 34vmin; --path: path-loop-b; --dur: 46s; --drift: 30s; --pulse: 12s; --x0:   8vw; --y0:  22vh; --scale: 1.00; --delay-path: 1.10s; --delay-drift: .90s; --delay-pulse: .50s; }
 
 
 
@@ -1353,7 +1353,7 @@ footer:hover .box-border {
 .hero::after {
 
   background:
-    linear-gradient(to bottom, rgba(5,10,18,0.5) 0%, rgba(5,10,18,1) 100%);
+    linear-gradient(to bottom, rgba(5, 10, 18, 0) 0%, rgba(5,10,18,1) 90%);
   mix-blend-mode: normal;
 }
   h1 {
