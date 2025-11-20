@@ -19,7 +19,7 @@
         top: var(--padding);
         transform: scale(var(--bg-scale));
         width: calc(100% - (var(--padding) * 2));
-        z-index: 1;
+        z-index: 2;
         @include br;
         @include max-prop(--padding, rem(10), rem(10));
 
@@ -40,6 +40,42 @@
         @include below("lg") {
             & > section {
                 background-color: $white;
+            }
+        }
+    }
+
+    &--soft-sky {
+        &::before {
+            background-color: $soft-sky;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $soft-sky;
+            }
+        }
+    }
+
+    &--midnight-indigo {
+        &::before {
+            background-color: $midnight-indigo;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $midnight-indigo;
+            }
+        }
+    }
+
+    &--royal-navy {
+        &::before {
+            background-color: $royal-navy;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $royal-navy;
             }
         }
     }
