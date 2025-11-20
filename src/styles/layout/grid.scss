@@ -1,0 +1,134 @@
+@use "@forwards" as *;
+@use "sass:map";
+
+$grid-config: (
+    columns: 12,
+    gap: var(--gap),
+    gutter: var(--gutter),
+);
+
+$responsive-config: (
+    xlg: (
+        breakpoint: "xlg",
+        columns: 12,
+    ),
+    lg: (
+        breakpoint: "lg",
+        columns: 12,
+    ),
+    md: (
+        breakpoint: "md",
+        columns: 12,
+    ),
+    sm: (
+        breakpoint: "sm",
+        columns: 12,
+    ),
+);
+
+$columns: ();
+
+@each $key, $value in $responsive-config {
+    $columns: map.merge(
+        $columns,
+        (
+            $key: map.get($value, columns),
+        )
+    );
+}
+
+.row {
+    display: grid;
+    grid-column-gap: map.get($grid-config, gap);
+    grid-row-gap: calc(map.get($grid-config, gap) * 1.5);
+    grid-template-columns: repeat(#{map.get($grid-config, columns)}, minmax(0, 1fr));
+    max-width: 100%;
+    padding-left: map.get($grid-config, gutter);
+    padding-right: map.get($grid-config, gutter);
+
+    @each $key, $value in $responsive-config {
+        @include below($key) {
+            grid-template-columns: repeat(#{map.get($value, columns)}, minmax(0, 1fr));
+        }
+    }
+
+    &--grid {
+        height: 100svh;
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: z("grid");
+
+        & .col {
+            background-color: rgba(255, 0, 0, 0.15);
+            height: 100vh;
+        }
+    }
+
+    &.padded {
+        @include max-prop(padding-top, rem(60), vw(100));
+        @include max-prop(padding-bottom, rem(60), vw(100));
+    }
+
+    &.equal-gap {
+        grid-column-gap: map.get($grid-config, gap);
+        grid-row-gap: map.get($grid-config, gap);
+    }
+
+    &.half-gap {
+        grid-column-gap: calc(map.get($grid-config, gap) / 2);
+
+        &.equal-gap {
+            grid-row-gap: calc(map.get($grid-config, gap) / 2);
+        }
+    }
+
+    &.no-gap {
+        grid-column-gap: 0;
+    }
+
+    &.no-gutter {
+        padding: 0;
+    }
+
+    &.half-gutter {
+        padding-left: calc(map.get($grid-config, gutter) / 2);
+        padding-right: calc(map.get($grid-config, gutter) / 2);
+    }
+}
+
+.col {
+    @for $i from 0 through map.get($grid-config, columns) {
+        &-#{$i} {
+            @if $i ==0 {
+                display: none;
+            } @else {
+                grid-column: span #{$i};
+            }
+        }
+    }
+}
+
+@for $i from 1 through map.get($grid-config, columns) {
+    .col {
+        &-#{$i} {
+            position: relative;
+            width: 100%;
+        }
+    }
+}
+
+@each $key, $value in $columns {
+    @for $i from 0 through $value {
+        .col-#{$key}-#{$i} {
+            @include below($key) {
+                @if $i ==0 {
+                    display: none;
+                } @else {
+                    display: block;
+                    grid-column: span #{$i};
+                }
+            }
+        }
+    }
+}

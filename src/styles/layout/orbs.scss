@@ -1,0 +1,363 @@
+@use "@forwards" as *;
+
+.orbs {
+    animation: layerFade 600ms ease-out both;
+    filter: blur(80px) saturate(1.05);
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: z("orbs");
+
+    &::after {
+        animation: layerFade 2500ms 1000ms ease-out both;
+        background: linear-gradient(to bottom, rgba(20, 40, 80, 0.3) 0%, rgba(5, 10, 18, 0.95) 100%), radial-gradient(160% 120% at 50% 0%, rgba(5, 10, 18, 0.35) 0%, transparent 60%);
+        content: "";
+        inset: 0;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+        position: fixed;
+        z-index: 0;
+    }
+}
+
+@keyframes layerFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+@property --tx {
+    inherits: false;
+    initial-value: 0;
+    syntax: "<length-percentage>";
+}
+
+@property --ty {
+    inherits: false;
+    initial-value: 0;
+    syntax: "<length-percentage>";
+}
+
+@property --dx {
+    inherits: false;
+    initial-value: 0;
+    syntax: "<length-percentage>";
+}
+
+@property --dy {
+    inherits: false;
+    initial-value: 0;
+    syntax: "<length-percentage>";
+}
+
+.orb {
+    animation:
+        var(--path, path-loop-a) var(--dur, 48s) linear infinite var(--delay-path, 0s),
+        drift var(--drift, 28s) cubic-bezier(0.4, 0, 0.2, 1) infinite var(--delay-drift, 0s),
+        pulse var(--pulse, 14s) cubic-bezier(0.4, 0, 0.2, 1) infinite var(--delay-pulse, 0s);
+    animation-fill-mode: both;
+    background: radial-gradient(circle at 30% 30%, rgba(183, 207, 255, 0.553) 0 26%, rgba(43, 86, 173, 0.72) 44%, transparent 72%);
+    border-radius: 50%;
+    height: var(--size, 50vmin);
+    position: absolute;
+    transform: translate3d(calc(var(--x0, 0vw) + var(--tx) + var(--dx)), calc(var(--y0, 0vh) + var(--ty) + var(--dy)), 0) scale(var(--scale, 1));
+    width: var(--size, 50vmin);
+    will-change: transform, filter, opacity;
+
+    --rangeX: 90vw;
+    --rangeY: 90vh;
+
+    --tx: 0;
+    --ty: 0;
+    --dx: 0;
+    --dy: 0;
+}
+
+@keyframes path-loop-a {
+    0% {
+        --tx: calc(-0.8 * var(--rangeX));
+        --ty: calc(-0.4 * var(--rangeY));
+    }
+
+    25% {
+        --tx: calc(-0.1 * var(--rangeX));
+        --ty: calc(0.6 * var(--rangeY));
+    }
+
+    50% {
+        --tx: calc(0.7 * var(--rangeX));
+        --ty: calc(-0.1 * var(--rangeY));
+    }
+
+    75% {
+        --tx: calc(0.2 * var(--rangeX));
+        --ty: calc(0.8 * var(--rangeY));
+    }
+
+    100% {
+        --tx: calc(-0.8 * var(--rangeX));
+        --ty: calc(-0.4 * var(--rangeY));
+    }
+}
+
+@keyframes path-loop-b {
+    0% {
+        --tx: calc(0.6 * var(--rangeX));
+        --ty: calc(0.7 * var(--rangeY));
+    }
+
+    25% {
+        --tx: calc(-0.5 * var(--rangeX));
+        --ty: calc(0.4 * var(--rangeY));
+    }
+
+    50% {
+        --tx: calc(-0.9 * var(--rangeX));
+        --ty: calc(-0.6 * var(--rangeY));
+    }
+
+    75% {
+        --tx: calc(0.2 * var(--rangeX));
+        --ty: calc(-0.2 * var(--rangeY));
+    }
+
+    100% {
+        --tx: calc(0.6 * var(--rangeX));
+        --ty: calc(0.7 * var(--rangeY));
+    }
+}
+
+@keyframes path-loop-c {
+    0% {
+        --tx: calc(-0.7 * var(--rangeX));
+        --ty: calc(0.6 * var(--rangeY));
+    }
+
+    25% {
+        --tx: calc(0.1 * var(--rangeX));
+        --ty: calc(-0.3 * var(--rangeY));
+    }
+
+    50% {
+        --tx: calc(0.8 * var(--rangeX));
+        --ty: calc(0.7 * var(--rangeY));
+    }
+
+    75% {
+        --tx: calc(-0.2 * var(--rangeX));
+        --ty: calc(0.2 * var(--rangeY));
+    }
+
+    100% {
+        --tx: calc(-0.7 * var(--rangeX));
+        --ty: calc(0.6 * var(--rangeY));
+    }
+}
+
+@keyframes path-loop-d {
+    0% {
+        --tx: calc(0.7 * var(--rangeX));
+        --ty: calc(-0.7 * var(--rangeY));
+    }
+
+    25% {
+        --tx: calc(-0.6 * var(--rangeX));
+        --ty: calc(0.6 * var(--rangeY));
+    }
+
+    50% {
+        --tx: calc(0.3 * var(--rangeX));
+        --ty: calc(0.9 * var(--rangeY));
+    }
+
+    75% {
+        --tx: calc(0 * var(--rangeX));
+        --ty: calc(-0.2 * var(--rangeY));
+    }
+
+    100% {
+        --tx: calc(0.7 * var(--rangeX));
+        --ty: calc(-0.7 * var(--rangeY));
+    }
+}
+
+@keyframes drift {
+    0% {
+        --dx: 0;
+        --dy: 0;
+        filter: brightness(1.18);
+    }
+
+    100% {
+        --dx: 1vw;
+        --dy: -0.7vh;
+        filter: brightness(1.32);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.84;
+    }
+
+    50% {
+        opacity: 0.98;
+    }
+}
+
+.orb--1 {
+    --size: 46vmin;
+    --path: path-loop-a;
+    --dur: 42s;
+    --drift: 26s;
+    --pulse: 13s;
+    --x0: -18vw;
+    --y0: -10vh;
+    --scale: 1.04;
+    --delay-path: 0s;
+    --delay-drift: 0s;
+    --delay-pulse: 0s;
+}
+
+.orb--2 {
+    --size: 36vmin;
+    --path: path-loop-b;
+    --dur: 38s;
+    --drift: 24s;
+    --pulse: 12s;
+    --x0: 10vw;
+    --y0: 12vh;
+    --scale: 0.98;
+    --delay-path: 0.1s;
+    --delay-drift: 0.2s;
+    --delay-pulse: 0.2s;
+}
+
+.orb--3 {
+    --size: 32vmin;
+    --path: path-loop-c;
+    --dur: 44s;
+    --drift: 27s;
+    --pulse: 14s;
+    --x0: -6vw;
+    --y0: 22vh;
+    --scale: 1;
+    --delay-path: 0.2s;
+    --delay-drift: 0.15s;
+    --delay-pulse: 0.15s;
+}
+
+.orb--4 {
+    --size: 54vmin;
+    --path: path-loop-d;
+    --dur: 40s;
+    --drift: 30s;
+    --pulse: 11s;
+    --x0: 14vw;
+    --y0: -20vh;
+    --scale: 1.1;
+    --delay-path: 0.3s;
+    --delay-drift: 0.4s;
+    --delay-pulse: 0.1s;
+}
+
+.orb--5 {
+    --size: 24vmin;
+    --path: path-loop-b;
+    --dur: 36s;
+    --drift: 22s;
+    --pulse: 10s;
+    --x0: -10vw;
+    --y0: 28vh;
+    --scale: 0.94;
+    --delay-path: 0.5s;
+    --delay-drift: 0.2s;
+    --delay-pulse: 0.15s;
+}
+
+.orb--6 {
+    --size: 28vmin;
+    --path: path-loop-a;
+    --dur: 39s;
+    --drift: 23s;
+    --pulse: 12s;
+    --x0: 20vw;
+    --y0: 8vh;
+    --scale: 1;
+    --delay-path: 0.6s;
+    --delay-drift: 0.55s;
+    --delay-pulse: 0.25s;
+}
+
+.orb--7 {
+    --size: 26vmin;
+    --path: path-loop-c;
+    --dur: 41s;
+    --drift: 21s;
+    --pulse: 9s;
+    --x0: -16vw;
+    --y0: -6vh;
+    --scale: 1.03;
+    --delay-path: 0.7s;
+    --delay-drift: 0.1s;
+    --delay-pulse: 0.15s;
+}
+
+.orb--8 {
+    --size: 30vmin;
+    --path: path-loop-d;
+    --dur: 43s;
+    --drift: 25s;
+    --pulse: 13s;
+    --x0: 6vw;
+    --y0: -22vh;
+    --scale: 0.98;
+    --delay-path: 0.8s;
+    --delay-drift: 0.65s;
+    --delay-pulse: 0.25s;
+}
+
+.orb--9 {
+    --size: 22vmin;
+    --path: path-loop-a;
+    --dur: 37s;
+    --drift: 19s;
+    --pulse: 10s;
+    --x0: -14vw;
+    --y0: 8vh;
+    --scale: 1.06;
+    --delay-path: 1s;
+    --delay-drift: 0.25s;
+    --delay-pulse: 0.3s;
+}
+
+.orb--10 {
+    --size: 34vmin;
+    --path: path-loop-b;
+    --dur: 46s;
+    --drift: 30s;
+    --pulse: 12s;
+    --x0: 8vw;
+    --y0: 22vh;
+    --scale: 1;
+    --delay-path: 1.1s;
+    --delay-drift: 0.9s;
+    --delay-pulse: 0.5s;
+}
+
+.orb--3,
+.orb--7 {
+    background: radial-gradient(circle at 35% 35%, rgba(43, 86, 173, 0.9) 0 24%, rgba(183, 207, 255, 0.82) 42%, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orb,
+    .orbs {
+        animation: none;
+    }
+}

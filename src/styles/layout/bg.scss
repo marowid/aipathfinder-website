@@ -1,0 +1,82 @@
+@use "@forwards" as *;
+
+.bg {
+    --bg-scale: 0.9;
+    background-color: transparent;
+    position: relative;
+    @include max-prop(padding, rem(10), rem(10));
+
+    @include below("md") {
+        padding: 0;
+    }
+
+    &::before {
+        content: "";
+        height: calc(100% - (var(--padding) * 2));
+        left: var(--padding);
+        pointer-events: none;
+        position: absolute;
+        top: var(--padding);
+        transform: scale(var(--bg-scale));
+        width: calc(100% - (var(--padding) * 2));
+        z-index: 2;
+        @include br;
+        @include max-prop(--padding, rem(10), rem(10));
+
+        @include below("lg") {
+            display: none;
+        }
+    }
+
+    & > section {
+        @include br;
+    }
+
+    &--white {
+        &::before {
+            background-color: $white;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $white;
+            }
+        }
+    }
+
+    &--soft-sky {
+        &::before {
+            background-color: $soft-sky;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $soft-sky;
+            }
+        }
+    }
+
+    &--midnight-indigo {
+        &::before {
+            background-color: $midnight-indigo;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $midnight-indigo;
+            }
+        }
+    }
+
+    &--royal-navy {
+        &::before {
+            background-color: $royal-navy;
+        }
+
+        @include below("lg") {
+            & > section {
+                background-color: $royal-navy;
+            }
+        }
+    }
+}

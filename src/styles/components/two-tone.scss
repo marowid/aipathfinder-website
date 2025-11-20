@@ -1,0 +1,39 @@
+@use "@forwards" as *;
+
+.two-tone {
+    color: $midnight-indigo;
+
+    & span {
+        animation: gradient-swing 5s ease-in-out infinite alternate;
+        // color: $cobalt-blue;
+        background: linear-gradient(135deg, #0e3f86, $cobalt-blue);
+        background-clip: text;
+        background-position: 0% center;
+        background-size: 180% auto;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &--light {
+        color: $white;
+
+        & span {
+            // color: $soft-sky;
+            background: linear-gradient(135deg, #6692d9, $soft-sky);
+            background-clip: text;
+            background-position: 0% center;
+            background-size: 180% auto;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
+@keyframes gradient-swing {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: 100% center;
+    }
+}

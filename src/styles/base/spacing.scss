@@ -1,0 +1,17 @@
+@use "@forwards" as *;
+
+:root {
+    @include max-prop(--header-height, rem($mobile-header-height), vw($header-height));
+    @include max-prop(--gutter, rem($mobile-gutter), vw($gutter));
+    @include max-prop(--gap, rem($mobile-gap), vw($gap));
+
+    @include below("lg") {
+        @include max-prop(--gutter, rem($mobile-gutter), vw($gutter / 2));
+        @include max-prop(--gap, rem($mobile-gap), vw($gap / 2));
+    }
+
+    @include below("md") {
+        @include max-prop(--gutter, rem($mobile-gutter), vw($mobile-gutter));
+        @include max-prop(--gap, rem($mobile-gap), vw($mobile-gap));
+    }
+}

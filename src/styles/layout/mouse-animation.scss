@@ -1,0 +1,65 @@
+@use "@forwards" as *;
+
+:root {
+    --trail-size: 400px;
+    --trail-radius: 400px;
+    --mobile-size: 400px;
+    --mobile-radius: 200px;
+    --enter-y: 24px;
+    --enter-scale: 0.98;
+    --enter-duration: 0.8s;
+    --enter-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.mouse_container {
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: -10;
+}
+
+.blur_overlay {
+    backdrop-filter: blur(40px);
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 1;
+    /* background-color: var( --background-dark-blue-20); */
+}
+
+.circle {
+    background: #b7cfff;
+    border-radius: var(--trail-radius);
+    height: var(--trail-size);
+    left: 0;
+    opacity: 0.03;
+    position: fixed;
+    top: 0;
+    transform: translate(0, 0) scale(1);
+    width: var(--trail-size);
+    will-change: transform;
+}
+
+.circle_mobile {
+    background: #b7cfff33;
+    border-radius: var(--mobile-radius);
+    display: none;
+    height: var(--mobile-size);
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--mobile-size);
+}
+
+.mouse_mobile {
+    filter: blur(40px);
+    inset: 0;
+    opacity: 0.4;
+    pointer-events: none;
+    position: fixed;
+    z-index: z("mouse");
+}

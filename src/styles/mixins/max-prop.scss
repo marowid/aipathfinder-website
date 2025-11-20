@@ -1,0 +1,15 @@
+@use "sass:string";
+@use "../utils/variables" as *;
+
+@mixin max-prop($cssProperty, $min-value, $max-value, $contextPx: $design-width) {
+    & {
+        #{$cssProperty}: $max-value; //fallback (MS Edge 18 and below)
+        #{$cssProperty}: string.unquote("max(#{$min-value},  #{$max-value})");
+    }
+
+    @media (min-width: string.unquote('#{$design-width*1.1}px')) {
+        $scale-factor: -0.5;
+        $dynamic-value: calc(max(#{$min-value}, min(#{$max-value}, #{$max-value} - (#{$max-value} - #{$min-value}) * min(1, $scale-factor * calc((100 - $contextPx) / $contextPx)))));
+        #{$cssProperty}: $dynamic-value;
+    }
+}

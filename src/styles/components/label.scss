@@ -1,0 +1,22 @@
+@use "@forwards" as *;
+
+.label {
+    background-color: rgba($color: $midnight-indigo, $alpha: 0.15);
+    border-radius: rem(60);
+    color: $midnight-indigo;
+    flex-wrap: nowrap;
+    height: fit-content;
+    opacity: 1 !important;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+    @include flex(center, center, 0, row);
+    @include max-prop(padding, rem(6), vw(6));
+    @include max-prop(padding-left, rem(12), vw(12));
+    @include max-prop(padding-right, rem(12), vw(12));
+
+    &--light {
+        background: rgba($color: $soft-sky, $alpha: 0.15);
+        color: $white;
+    }
+}

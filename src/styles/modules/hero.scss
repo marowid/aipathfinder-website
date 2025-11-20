@@ -1,0 +1,38 @@
+@use "@forwards" as *;
+
+.hero {
+    // height: 80svh;
+    // margin-top: var(--header-height);
+    align-items: center;
+    @include max-prop(padding-top, rem(220), vw(220));
+    @include max-prop(padding-bottom, rem(130), vw(130));
+
+    &--home {
+        height: 100svh;
+        @include max-prop(padding-top, rem(140), vw(140));
+    }
+
+    &__img {
+        @include flex(center, center, 0, row);
+
+        @include below("md") {
+            bottom: 0;
+            max-width: 60%;
+            opacity: 0.3;
+            position: absolute;
+            right: 0;
+            z-index: -1;
+        }
+
+        @include below("sm") {
+            max-width: 75%;
+        }
+
+        & svg,
+        & img {
+            height: auto;
+            object-fit: contain;
+            width: 90%;
+        }
+    }
+}

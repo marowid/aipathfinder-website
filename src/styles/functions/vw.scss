@@ -1,0 +1,7 @@
+@use "./strip-unit" as *;
+@use "../utils/variables" as *;
+@use "sass:math";
+
+@function vw($targetPx, $contextPx: $design-width) {
+    @return #{math.div(strip-unit($targetPx), strip-unit($contextPx)) * 100}vw;
+}

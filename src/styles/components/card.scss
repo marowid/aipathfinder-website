@@ -1,0 +1,191 @@
+@use "@forwards" as *;
+
+.card {
+    background-color: $midnight-indigo;
+    background-image: url("../../assets/img/card-orb.svg");
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include br;
+
+    &__inner {
+        color: $white;
+        height: 100%;
+        transition: $trans;
+        @include max-prop(padding, rem(30), vw(30));
+        @include flex(flex-end, flex-start, rem(16), column);
+        @include max-prop(gap, rem(16), vw(16));
+
+        & > small,
+        & > p {
+            opacity: 0.8;
+        }
+
+        &--front {
+            bottom: 0;
+            position: absolute;
+        }
+
+        &--back {
+            opacity: 0;
+            transform: translateY(60%);
+        }
+    }
+
+    @include hover {
+        & .card__inner--back {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+
+        & .card__inner--front {
+            opacity: 0;
+        }
+    }
+
+    @media (hover: none) {
+        & .card__inner--back {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+
+        & .card__inner--front {
+            display: none;
+        }
+    }
+
+    &__img {
+        aspect-ratio: 274/300;
+        filter: grayscale(1);
+        height: auto;
+        object-fit: cover;
+        width: 100%;
+        @include br;
+        @include max-prop(margin-bottom, rem(14), vw(14));
+
+        &--pr {
+            aspect-ratio: 274/182;
+            filter: unset;
+        }
+    }
+
+    &__list {
+        // opacity: 0;
+        // transition: $trans;
+        @include max-prop(margin-top, rem(6), vw(6));
+
+        & li {
+            border-bottom: rem(1) solid $white;
+            padding: rem(10) 0;
+
+            &:first-child {
+                border-top: rem(1) solid $white;
+            }
+        }
+    }
+
+    &__bullets {
+        list-style: inside disc;
+
+        & li {
+            padding: rem(5) 0;
+        }
+    }
+
+    & .label {
+        @include max-prop(margin-bottom, rem(50), vw(50));
+    }
+
+    & .btn {
+        @include max-prop(margin-top, rem(25), vw(25));
+
+        &--linkedin {
+            @include max-prop(margin-top, rem(16), vw(16));
+        }
+    }
+
+    &--padded {
+        & .card__inner {
+            @include max-prop(padding, rem(30), vw(40));
+        }
+    }
+
+    &--light {
+        background-color: $white;
+        background-image: url("../../assets/img/card-orb.svg");
+
+        & .card {
+            &__inner {
+                color: $midnight-indigo;
+            }
+
+            &__list {
+                & li {
+                    border-color: $midnight-indigo;
+                }
+            }
+        }
+
+        & a.card__inner {
+            @include hover {
+                background-color: $soft-sky;
+            }
+        }
+    }
+
+    &--person {
+        & .card__inner {
+            justify-content: flex-start;
+        }
+
+        &--tall {
+            @include max-prop(padding-top, rem(50), vw(80));
+        }
+    }
+
+    &--pr {
+        & .card__inner {
+            justify-content: flex-start;
+            @include max-prop(gap, rem(30), vw(30));
+
+            & .card__img,
+            & .label,
+            & .btn {
+                margin: 0;
+            }
+
+            & .btn {
+                margin-top: auto;
+            }
+
+            & > small {
+                border-bottom: rem(1) solid $soft-sky;
+                @include max-prop(padding-bottom, rem(26), vw(26));
+
+                &:last-of-type {
+                    border: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &--tall {
+        & .card__inner {
+            justify-content: space-between;
+            @include max-prop(gap, rem(40), vw(40));
+        }
+    }
+
+    @include hover {
+        & .card__list {
+            opacity: 1;
+        }
+    }
+}
+
+a.card__inner {
+    @include hover {
+        background-color: $midnight-indigo;
+    }
+}

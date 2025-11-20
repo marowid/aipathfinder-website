@@ -1,0 +1,24 @@
+@use "./easing.scss" as *;
+
+$trans: all 0.3s ease;
+$image-hover-trans: all 0.5s ease;
+
+$design-width: 1440;
+$rem-base: 16;
+
+$gutter: 150;
+$mobile-gutter: 30;
+
+$gap: 40;
+$mobile-gap: 20;
+
+$header-height: 90;
+$mobile-header-height: 75;
+
+$breakpoints: (
+    "xsm": 425px,
+    "sm": 600px,
+    "md": 768px,
+    "lg": 1024px,
+    "xlg": 1232px,
+);

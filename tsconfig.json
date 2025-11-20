@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "ESNext",
+        "strict": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "./src/dist",
+        "baseUrl": "./",
+        "paths": {
+            "*": ["./src/*"]
+        },
+        "types": ["unplugin-turbo-console/client"],
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "noImplicitAny": false
+    },
+    "include": ["./src/scripts/**/*", "custom.d.ts"],
+    "exclude": ["node_modules"]
+}

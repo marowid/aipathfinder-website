@@ -1,0 +1,14 @@
+@use "@forwards" as *;
+
+.link {
+    position: relative;
+    transition: $trans;
+
+    &.active {
+        color: $cobalt-blue;
+    }
+
+    @include hover {
+        color: $cobalt-blue;
+    }
+}

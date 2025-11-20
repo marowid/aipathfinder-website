@@ -1,0 +1,31 @@
+@use "@forwards" as *;
+
+.hamburger {
+    @include max-prop(width, rem(24), vw(24));
+    @include max-prop(height, rem(24), vw(24));
+    @include flex(center, center, rem(5), column);
+
+    &__line {
+        background-color: $midnight-indigo;
+        height: rem(2);
+        transform-origin: center;
+        transition: $trans;
+        width: 100%;
+    }
+
+    &.active {
+        & .hamburger__line {
+            &:nth-child(1) {
+                transform: translateY(rem(7)) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                transform: rotate(45deg);
+            }
+
+            &:nth-child(3) {
+                transform: translateY(rem(-7)) rotate(-45deg);
+            }
+        }
+    }
+}

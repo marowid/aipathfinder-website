@@ -1,0 +1,63 @@
+@use "@forwards" as *;
+
+.contact {
+    &__details {
+        border: rem(1) solid rgba($color: $midnight-indigo, $alpha: 0.15);
+        @include max-prop(padding, rem(30), vw(40));
+        @include flex(flex-start, flex-start, rem(60), column);
+        @include max-prop(gap, rem(30), vw(60));
+        @include br;
+    }
+
+    &__list {
+        @include flex(flex-start, flex-start, rem(20), column);
+    }
+
+    &__item {
+        @include flex(flex-start, center, rem(20), row);
+
+        &__icon {
+            aspect-ratio: 1/1;
+            border: rem(1) solid $cobalt-blue;
+            flex-shrink: 1;
+            height: fit-content;
+            @include br;
+            @include flex(center, center, 0, row);
+            @include max-prop(padding, rem(10), vw(10));
+
+            & img {
+                object-fit: contain;
+                @include max-prop(width, rem(20), vw(20));
+                @include max-prop(height, rem(20), vw(20));
+            }
+        }
+
+        &__text {
+            @include flex(flex-start, flex-start, rem(4), column);
+
+            & a {
+                text-decoration: underline;
+                transition: $trans;
+
+                @include hover {
+                    color: $cobalt-blue;
+                }
+            }
+
+            & small {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &__map {
+        border: 0;
+        height: 100%;
+        width: 100%;
+
+        @include below("lg") {
+            aspect-ratio: 3/2;
+            height: auto;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@use "@forwards" as *;
+
+hr {
+    border: 0;
+    border-top: rem(1) solid $soft-sky;
+    margin-left: var(--gutter);
+    max-width: calc(100% - (var(--gutter) * 2));
+}

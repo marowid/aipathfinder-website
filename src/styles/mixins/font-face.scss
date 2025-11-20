@@ -1,0 +1,14 @@
+@use "sass:string";
+
+@mixin font-face($name, $url, $weight, $style: normal) {
+    @font-face {
+        font-display: swap;
+        font-family: string.quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src:
+            url("/assets/fonts/#{$url}.woff2") format("woff2"),
+            url("/assets/fonts/#{$url}.woff") format("woff"),
+            url("/assets/fonts/#{$url}.ttf") format("truetype");
+    }
+}
