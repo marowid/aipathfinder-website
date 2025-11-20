@@ -1,0 +1,2 @@
+function e(){const e=document.querySelector("main");if(new URLSearchParams(window.location.search).has("grid")){const c=document.createElement("div");c.classList.add("row","row--grid");const o=[];for(let e=1;e<=24;e++)o.push(["col","col-1"]);o.forEach(e=>{const o=document.createElement("div");o.classList.add(...e),c.appendChild(o)}),e?.appendChild(c)}}export{e as default};
+//# sourceMappingURL=grid-TDDc91rl.js.map

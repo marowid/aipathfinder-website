@@ -1,0 +1,2 @@
+import{i as e,b as t,t as r}from"./script-CIVj4l4x.js";function l(){const l=document.querySelector(".header");if(!l)return;const c=l.querySelector(".header__nav"),a=l.querySelector(".header__mbl-toggle");if(!a||!c)return;const n=a.querySelector(".hamburger");if(!n)return;let o=!1;a.addEventListener("click",()=>{e.w<t.lg&&(c.classList.toggle("open"),n.classList.toggle("active"),r(o?"enable":"disable"),o=!o)});c.querySelectorAll("a.nav-link").forEach(e=>{e.addEventListener("click",()=>a.click())})}export{l as default};
+//# sourceMappingURL=mbl-nav-DJD7EJU5.js.map
