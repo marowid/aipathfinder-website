@@ -1,0 +1,57 @@
+@use "./max-prop" as *;
+@use "sass:math";
+@use "sass:meta";
+
+@mixin flex($justifyContent: flex-start, $alignItems: flex-start, $gap: 0, $dir: row) {
+    & {
+        display: flex;
+
+        @if $justifyContent != "flex-start" {
+            justify-content: $justifyContent;
+        }
+
+        @if $alignItems != "flex-start" {
+            align-items: $alignItems;
+        }
+
+        @if $dir != "row" {
+            flex-direction: $dir;
+        }
+
+        @if (meta.type-of($gap) == "number" and math.is-unitless($gap) and $gap != 0) {
+            @include max-prop(gap, rem($gap), vw($gap));
+        } @else if ($gap != 0) {
+            gap: $gap;
+        }
+    }
+}
+
+@mixin even-grid($cols: 0, $rows: 0, $gap: 0) {
+    & {
+        display: grid;
+
+        @if $cols != 0 {
+            grid-template-columns: repeat($cols, 1fr);
+        }
+
+        @if $rows != 0 {
+            grid-template-rows: repeat($rows, 1fr);
+        }
+
+        @if $gap {
+            @if $gap != 0 or $gap != 0 {
+                grid-gap: $gap;
+            }
+        }
+    }
+}
+
+@mixin auto-even-grid($gap: 0) {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+
+    @if $gap != 0 {
+        grid-gap: $gap;
+    }
+}

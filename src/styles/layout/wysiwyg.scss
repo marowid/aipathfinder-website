@@ -1,0 +1,37 @@
+@use "@forwards" as *;
+
+.wysiwyg {
+    @include flex(flex-start, flex-start, rem(40), column);
+
+    & ul,
+    & ol {
+        list-style-position: outside;
+        @include max-prop(padding-left, rem(16), vw(16));
+
+        & li::marker {
+            color: $midnight-indigo;
+        }
+    }
+
+    & ul {
+        list-style-type: disc;
+    }
+
+    & ol {
+        list-style-type: auto;
+    }
+
+    & a:not(.btn, .link) {
+        text-decoration: underline;
+    }
+
+    & img {
+        height: auto;
+    }
+
+    & iframe,
+    & figure {
+        max-width: 100% !important;
+        min-width: unset !important;
+    }
+}

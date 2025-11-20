@@ -1,0 +1,55 @@
+@use "@forwards" as *;
+
+.marquee {
+    background-color: $cobalt-blue;
+    bottom: 0;
+    color: $white;
+    overflow: hidden;
+    position: fixed;
+    transform: translateY(calc(var(--scroll-direction) * 100%));
+    transition: $trans;
+    white-space: nowrap;
+    width: 100%;
+    z-index: z("header");
+    @include max-prop(padding-bottom, rem(10), vw(10));
+    @include max-prop(padding-top, rem(10), vw(10));
+    @include flex(flex-start, center, rem(10), row);
+    @include max-prop(gap, rem(10), vw(10));
+
+    @include hover {
+        background-color: $royal-navy;
+
+        & .marquee__wrapper {
+            animation-play-state: paused;
+        }
+    }
+
+    &__wrapper {
+        animation: marquee-scroll 60s linear infinite;
+        @include flex(flex-start, center, rem(10), row);
+        @include max-prop(gap, rem(10), vw(10));
+    }
+
+    &__item {
+        display: flex !important;
+        width: fit-content;
+        @include flex(center, center, 0, row);
+
+        & img {
+            flex-shrink: 0;
+            object-fit: contain;
+            @include max-prop(height, rem(24), vw(24));
+            @include max-prop(width, rem(24), vw(24));
+        }
+    }
+
+    @keyframes marquee-scroll {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+}

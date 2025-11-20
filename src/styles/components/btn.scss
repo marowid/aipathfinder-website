@@ -1,0 +1,70 @@
+@use "@forwards" as *;
+
+.btn {
+    background-color: $cobalt-blue;
+    border: rem(1) solid $cobalt-blue;
+    color: $white;
+    flex-wrap: nowrap;
+    height: fit-content;
+    text-align: center;
+    transition: $trans;
+    white-space: nowrap;
+    width: fit-content;
+    @include br;
+    @include flex(center, center, 0, row);
+    @include max-prop(padding, rem(14), vw(14));
+    @include max-prop(padding-left, rem(25), vw(25));
+    @include max-prop(padding-right, rem(25), vw(25));
+    @include max-prop(gap, rem(15), vw(15));
+
+    @include component-hover {
+        background-color: $royal-navy;
+        border-color: $royal-navy;
+    }
+
+    &--alt {
+        background-color: transparent;
+        border-color: $soft-sky;
+        color: $soft-sky;
+
+        @include component-hover {
+            background-color: $soft-sky;
+            border-color: $soft-sky;
+            color: $deep-space-blue;
+        }
+
+        &--white {
+            border-color: $white;
+            color: $white;
+
+            @include component-hover {
+                background-color: $white;
+                border-color: $white;
+                color: $deep-space-blue;
+            }
+        }
+    }
+
+    &--light {
+        background-color: $soft-sky;
+        border-color: $soft-sky;
+
+        @include component-hover {
+            background-color: $cobalt-blue;
+            border-color: $cobalt-blue;
+        }
+    }
+
+    &--icon {
+        @include max-prop(padding, rem(15), vw(15));
+    }
+
+    &--linkedin {
+        &::before {
+            content: url("/assets/icons/linkedin.svg");
+            display: inline-block;
+            height: rem(19);
+            width: rem(18);
+        }
+    }
+}

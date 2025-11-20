@@ -1,0 +1,37 @@
+@use "@forwards" as *;
+
+.footer {
+    color: $white;
+    position: relative;
+    z-index: z("section");
+    @include max-prop(padding, rem(30), vw(30));
+    @include max-prop(padding-right, rem(60), vw(60));
+    @include max-prop(padding-left, rem(60), vw(60));
+    @include flex(space-between, center, rem(30), row);
+
+    @include below("xlg") {
+        align-items: flex-end;
+        @include even-grid(2, 2, rem(10) var(--gap));
+    }
+
+    @include below("md") {
+        align-items: flex-start;
+        @include max-prop(padding-right, rem(30), vw(30));
+        @include max-prop(padding-left, rem(30), vw(30));
+        @include flex(flex-start, flex-start, rem(8), column);
+    }
+
+    @include below("md") {
+        & .logo {
+            @include max-prop(margin-bottom, rem(5), vw(5));
+        }
+
+        & small:nth-last-child(2) {
+            @include max-prop(margin-top, rem(35), vw(35));
+        }
+    }
+
+    & small {
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,37 @@
+@use "@forwards" as *;
+
+.flex {
+    @include flex(flex-start, flex-start, var(--gap), row);
+
+    &-gap {
+        &-sm {
+            @include max-prop(gap, rem(10), vw(10));
+        }
+
+        &-lg {
+            @include max-prop(gap, rem(30), vw(30));
+        }
+    }
+
+    &-column {
+        flex-direction: column;
+    }
+
+    &-jc {
+        &-center {
+            justify-content: flex-start;
+        }
+
+        &-end {
+            justify-content: flex-end;
+        }
+
+        &-between {
+            justify-content: space-between;
+        }
+    }
+
+    &-wrap {
+        flex-wrap: wrap;
+    }
+}

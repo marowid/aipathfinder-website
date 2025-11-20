@@ -1,0 +1,37 @@
+@use "@forwards" as *;
+
+.list {
+    &__wrap {
+        @include max-prop(row-gap, rem(20), vw(20));
+
+        & li {
+            border-top: rem(1) solid $soft-sky;
+            @include flex(flex-start, flex-start, rem(26), column);
+            @include max-prop(gap, rem(15), vw(26));
+            @include max-prop(padding-top, rem(40), vw(40));
+            @include max-prop(padding-bottom, rem(40), vw(40));
+
+            & p {
+                opacity: 0.8;
+
+                @include above("md") {
+                    max-width: 90%;
+                }
+            }
+        }
+    }
+
+    &--has-btn {
+        & li {
+            &:nth-last-child(1) {
+                border-bottom: rem(1) solid $soft-sky;
+            }
+
+            @include above("md") {
+                &:nth-last-child(2) {
+                    border-bottom: rem(1) solid $soft-sky;
+                }
+            }
+        }
+    }
+}

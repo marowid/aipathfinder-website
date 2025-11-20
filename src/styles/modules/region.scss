@@ -1,0 +1,97 @@
+@use "@forwards" as *;
+
+.region {
+    padding-top: 0 !important;
+    position: relative;
+
+    &__map {
+        background-color: $soft-sky;
+        border-radius: $br;
+        height: fit-content;
+        // height: calc(100svh - var(--header-height) - rem(40));
+        height: 70vh;
+        overflow: hidden;
+        padding: rem(10);
+        @include flex(center, center, 0, row);
+
+        @include above("lg") {
+            height: calc(100svh - var(--header-height) - rem(80));
+        }
+
+        & svg {
+            height: 100%;
+            object-fit: contain;
+            width: 100%;
+
+            & path {
+                cursor: pointer;
+                fill: $royal-navy;
+                stroke: $soft-sky;
+                transition: $trans;
+
+                @include hover {
+                    &:not(.disabled) {
+                        fill: $royal-navy;
+                    }
+                }
+
+                &.disabled {
+                    cursor: not-allowed;
+                    fill: rgba($color: $royal-navy, $alpha: 0.5);
+                }
+
+                &.active {
+                    fill: $cobalt-blue;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    &__body {
+        color: $white;
+        display: flex !important;
+        overflow: visible !important;
+        position: relative;
+        @include flex(flex-start, flex-start, rem(60), column);
+        @include max-prop(gap, rem(40), vw(60));
+
+        &__tabs {
+            border-bottom: rem(1) solid $soft-sky;
+            padding-bottom: rem(20);
+            z-index: 2;
+            @include flex(space-between, center, rem(20), row);
+
+            @include above("lg") {
+                border-top: rem(1) solid $soft-sky;
+                padding-top: rem(20);
+            }
+
+            &__location {
+                color: $soft-sky;
+            }
+
+            &__btns {
+                @include flex(flex-end, flex-start, rem(20), row);
+                @include max-prop(gap, rem(10), vw(20));
+
+                .arrow-btn.swiper-button-prev {
+                    transform: rotate(180deg) !important;
+                }
+            }
+        }
+
+        &__detail {
+            & .text {
+                @include above("md") {
+                    max-width: 90%;
+                }
+
+                & p,
+                & small {
+                    max-width: unset;
+                }
+            }
+        }
+    }
+}

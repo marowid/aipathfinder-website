@@ -1,0 +1,45 @@
+@use "@forwards" as *;
+
+$colors: (
+    "white": $white,
+    "deep-space-blue": $deep-space-blue,
+    "midnight-indigo": $midnight-indigo,
+    "soft-sky": $soft-sky,
+    "royal-navy": $royal-navy,
+    "cobalt-blue": $cobalt-blue,
+    "gradient": $gradient,
+);
+
+:root {
+    @each $name, $value in $colors {
+        --#{$name}: #{$value};
+    }
+}
+
+.bg {
+    @each $name, $value in $colors {
+        &--#{$name} {
+            background-color: $value;
+        }
+    }
+}
+
+.text {
+    @each $name, $value in $colors {
+        &--#{$name} {
+            color: $value;
+        }
+    }
+}
+
+.arrow {
+    @each $name, $value in $colors {
+        &--#{$name} {
+            background-color: $value;
+
+            & .shape path {
+                fill: $value;
+            }
+        }
+    }
+}

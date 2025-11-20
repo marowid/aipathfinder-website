@@ -1,0 +1,8 @@
+@use "@forwards" as *;
+
+.btn-group {
+    flex-wrap: wrap;
+    @include flex(flex-start, flex-start, rem(20), row);
+    @include max-prop(column-gap, rem(15), vw(20));
+    @include max-prop(row-gap, rem(15), vw(15));
+}

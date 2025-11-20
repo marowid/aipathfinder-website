@@ -1,0 +1,25 @@
+@use "@forwards" as *;
+
+.spacer {
+    width: 100%;
+
+    &--head {
+        padding-top: calc(var(--header-height) + rem(20));
+    }
+
+    &--xs {
+        height: rem(20);
+    }
+
+    &--s {
+        height: rem(100);
+    }
+
+    &--m {
+        height: rem(120);
+    }
+
+    &--l {
+        height: rem(150);
+    }
+}

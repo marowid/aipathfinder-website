@@ -1,0 +1,45 @@
+@use "@forwards" as *;
+
+.logo {
+    display: flex;
+    transition: $trans;
+
+    & svg {
+        @include max-prop(height, rem(34), vw(34));
+
+        & path {
+            transition: $trans;
+
+            &:last-of-type {
+                transform-origin: center center;
+                transition: $trans;
+            }
+
+            // @include below("md") {
+            //     display: none;
+
+            //     &:last-of-type {
+            //         display: block;
+            //     }
+            // }
+        }
+    }
+
+    @include hover {
+        & svg path {
+            fill: $cobalt-blue;
+
+            &:last-of-type {
+                transform: scale(0.95) translateX(-2%) translateY(-18%) rotate(-5deg);
+            }
+        }
+    }
+
+    &--white {
+        @include hover {
+            & svg path {
+                fill: $soft-sky;
+            }
+        }
+    }
+}

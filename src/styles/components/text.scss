@@ -1,0 +1,41 @@
+@use "@forwards" as *;
+
+.text {
+    @include flex(flex-start, flex-start, rem(30), column);
+    @include max-prop(gap, rem(20), vw(30));
+
+    &--center {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &--padded {
+        @include max-prop(margin-bottom, rem(20), vw(40));
+    }
+
+    &--margin-top {
+        @include max-prop(margin-top, rem(30), vw(50));
+    }
+
+    & h1,
+    & .h1 {
+        @include max-prop(margin-bottom, rem(10), vw(16));
+    }
+
+    & p {
+        opacity: 0.8;
+
+        @include above("md") {
+            max-width: 80%;
+        }
+
+        @include above("sm") {
+            max-width: 90%;
+        }
+    }
+
+    & .btn-group {
+        @include max-prop(margin-top, rem(30), vw(30));
+    }
+}

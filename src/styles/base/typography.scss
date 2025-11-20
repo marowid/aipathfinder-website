@@ -1,0 +1,76 @@
+@use "@forwards" as *;
+
+h1,
+.h1 {
+    line-height: 96%;
+    @include max-prop(font-size, rem(60), vw(100));
+    @include min-prop(letter-spacing, rem(-1.2), vw(-2));
+}
+
+h2,
+.h2 {
+    line-height: 106%;
+    @include max-prop(font-size, rem(36), vw(60));
+    @include min-prop(letter-spacing, rem(-0.72), vw(-1.2));
+}
+
+h3,
+.h3 {
+    line-height: 111%;
+    @include max-prop(font-size, rem(28), vw(36));
+    @include min-prop(letter-spacing, rem(-0.56), vw(-0.72));
+}
+
+h4,
+.h4 {
+    line-height: 107%;
+    @include max-prop(font-size, rem(22), vw(28));
+    @include min-prop(letter-spacing, rem(-0.44), vw(-0.56));
+}
+
+h5,
+.h5 {
+    line-height: 136%;
+    @include max-prop(font-size, rem(22), vw(22));
+    @include min-prop(letter-spacing, rem(-0.44), vw(-0.44));
+}
+
+h6,
+.h6 {
+    line-height: 140%;
+    @include max-prop(font-size, rem(20), vw(20));
+    @include min-prop(letter-spacing, rem(-0.4), vw(-0.4));
+}
+
+p,
+.p,
+body,
+ul,
+ol,
+input,
+select,
+figcaption,
+label {
+    line-height: 144%;
+    @include max-prop(font-size, rem(18), vw(18));
+    @include min-prop(letter-spacing, rem(-0.36), vw(-0.36));
+}
+
+small {
+    line-height: 146%;
+    @include max-prop(font-size, rem(15), vw(15));
+    @include min-prop(letter-spacing, rem(-0.3), vw(-0.3));
+}
+
+.btn,
+.link {
+    line-height: 112%;
+    @include max-prop(font-size, rem(16), vw(16));
+    @include min-prop(letter-spacing, rem(-0.32), vw(-0.32));
+}
+
+.label {
+    line-height: 100%;
+    @include max-prop(font-size, rem(14), vw(14));
+    @include min-prop(letter-spacing, rem(-0.28), vw(-0.28));
+}

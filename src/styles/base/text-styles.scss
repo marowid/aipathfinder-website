@@ -1,0 +1,35 @@
+@use "@forwards" as *;
+
+em,
+i {
+    font-style: italic;
+}
+
+sup {
+    vertical-align: 20%;
+}
+
+blockquote {
+    cite {
+        display: block;
+        padding-top: 2rem;
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.sr-only:not(.focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
